@@ -1,0 +1,1510 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : COL_FluxRSS
+ major_version : 28
+ minor_version : 0
+ type : 7
+ description : ""
+ subtype : 0
+procedure_set :
+ identifier : 0x15a3dc5b0120c1b1
+ internal_properties : CAAAAAgAAABGLu41kG7fjQV3iS4F72qmnKaNh5694reolNKIW0iw
+ code_elements :
+  internal_properties : CAAAAAgAAAAGmcfaWGTqxbhPJ5D/GtB3wLmFiHhARO08fCeu7g+IiGvBbs3DkwFOA9tgBUiWZ4VGjsteBq+QEnFycF8W6odJq26ykJX1JTRianIG82Cwld3+rYtWS6uEilbqTYsRbw==
+  type_code : 31
+  p_codes :
+   -
+     internal_properties : CAAAAAgAAAB1NzpE6fHxlpWM3dvDqQBWIjPat2EH8xNENAWb8mIoBYfhOlHk3h3QWgbhoPTopqN26TFcPVAYys5RsWY8BBIfi1bgDfh7tagMgkYhDzQLRRi9xmW4PnxhmugnL0r1MnwlP3nHlybMV1AjBQDdIClnMY8w+cjcSI15/y5Qd8WOwc7SbXV3MIwiO0LMxETsiCJ+hCBGLo7ZuOMyCoKtaHBN5oq073PPm4jMRjSK7g==
+     code : |1+
+      
+      CONSTANTE
+      	BALISE_TITRE_OUVRE = "<title>"
+      	BALISE_TITRE_FERME = "</title>"
+      	
+      	BALISE_DESCRIPTION_OUVRE = "<description>"
+      	BALISE_DESCRIPTION_FERME = "</description>"
+      	
+      	BALISE_BILLET_OUVRE = "<item>"
+      	BALISE_BILLET_FERME = "</item>"
+      	
+      	BALISE_DATE_OUVRE = "<pubDate>"
+      	BALISE_DATE_FERME = "</pubDate>"
+      	
+      	BALISE_LINK_OUVRE = "<link>"
+      	BALISE_LINK_FERME = "</link>"
+      	
+      	EXCEPTION_MSG = "Flux RSS incorrect, veuillez vérifier l'adresse du flux ou l'état de votre connexion."
+      	
+      	// Balise redirection
+      	BALISE_REDIRECTION = "<meta http-equiv=""REFRESH"" content="""
+      	
+      	// Code HTTP
+      	CODE_301 = 301
+      	CODE_302 = 302
+      	
+      	FORMAT_HTTP  = "http://"
+      	FORMAT_HTTPS = "https://"
+      	
+      	
+      	MAX_NBRE_BILLETS = 10
+      FIN
+      
+      // Structure représentant un billet d'un flux RSS
+      structBillet est une structure
+      	sTitre       est une chaine
+      	sDescription est une chaine
+      	dhDateHeure  est un DateHeure
+      	sLien        est une chaine
+      	sImage       est une chaine
+      FIN
+      
+      // Structure représentant un flux RSS
+      structFluxRSS est une structure
+      	sTitre       est une chaine
+      	sLien        est une chaine
+      	sDescription est une chaine
+      	bufImage     est un Buffer
+      	sResultatHTTP est une chaine 
+      	tabBillet    est un tableau de structBillet
+      FIN
+      
+      
+      // Erreur ?
+      gbErreur est un booléen = Faux
+      gsMsgErr est une chaine
+      
+      
+      
+     type : 720896
+  procedures :
+   -
+     name : _extraitBalise
+     procedure_id : 1559332179419513265
+     type_code : 15
+     code : |1+
+      // Résumé : Extrait la valeur de la première balise trouvée à la position donnée
+      
+      PROCEDURE PRIVE _extraitBalise(LOCAL sContenu, LOCAL sBaliseOuvrante, LOCAL sBaliseFermante, LOCAL nPosition)
+      
+      // Variables
+      sValeur        est une chaine
+      nPositionDebut est un entier
+      nPositionFin   est un entier
+      
+      // Recherche la balise de début
+      nPositionDebut = Position(sContenu, sBaliseOuvrante, nPosition, DepuisDébut + SansCasse)
+      
+      // Recherche la balise de fin
+      SI nPositionDebut <> 0 ALORS
+      	nPositionFin = Position(sContenu, sBaliseFermante, nPositionDebut, DepuisDébut + SansCasse)
+      	
+      	// Extrait le contenu des balises
+      	sValeur = sContenu[[nPositionDebut + TAille(sBaliseOuvrante) A nPositionFin - 1]]
+      	
+      	sValeur = SansEspace(sValeur)
+      FIN
+      
+      // Formate le texte récupéré
+      sValeur = _formateCData(sValeur)
+      
+      sValeur = HTMLVersTexte(XMLVersTexte(sValeur))
+      
+      RENVOYER sValeur
+     type : 458752
+   -
+     name : _formateCData
+     procedure_id : 1559332179419578801
+     type_code : 15
+     code : |1+
+      // Résumé : Enlève les balises CData
+      
+      PROCEDURE PRIVE _formateCData(LOCAL sContenu)
+      
+      sContenu = Remplace(sContenu, "<![CDATA[", "")
+      sContenu = Remplace(sContenu, "]]>", "")
+      
+      RENVOYER sContenu
+      
+     type : 458752
+   -
+     name : _dateConvertie
+     internal_properties : CAAAAAgAAACjgnRnWSsGTKMZeda5hqrzxDq9+VMLZu8ik3X7gVsM4w/9X3Wk/q0b3LA2/WjQ86DrEDEAKpKsHSji0dlMrDB2hoAFLJV4MkSsGIL0Y7ZLokKHEn4u4KkAIhziG2kWgf+JTq3mYsneFqJ9NqyMbexAPevZX3kBoqfM4c2pNrszT8srwzXWUDy/DO/+4N2Awb3YKX9Q6YYoBE6Bv5RVFZSn
+     procedure_id : 1559332179419644337
+     type_code : 15
+     code : |1+
+      
+      // Résumé : Convertit une date RSS en une DateHeure WLangage
+      
+      PROCEDURE PRIVÉ _dateConvertie(LOCAL sValeurBalise est une chaîne)
+      
+      dhDateHeure est un DateHeure
+      dhDateHeure..Milliseconde = "000"
+      
+      sHeureDécalage, sMinuteDécalage sont des chaînes
+      sSigneDécalage est une chaîne
+      sMoisEnLettre est une chaîne
+      
+      
+      nJour est un entier
+      nMois est un entier
+      nAnnée est un entier
+      nHeure est un entier
+      nMinute est un entier
+      nSeconde est un entier
+      
+      // Format JJ-MM-AAAA HH:mm:SS (13-07-2015 14:15:10)
+      SI VérifieExpressionRégulière( ChaîneVersUTF8(sValeurBalise),ChaîneVersUTF8( "([0-9]{2,2})-([0-9]{2,2})-([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2})"),nJour, nMois, nAnnée, nHeure, nMinute, nSeconde) ALORS
+      	
+      	dhDateHeure..jour = nJour
+      	dhDateHeure..mois = nMois
+      	dhDateHeure..année = nAnnée
+      	dhDateHeure..heure = nHeure
+      	dhDateHeure..minute = nMinute
+      	dhDateHeure..seconde = nSeconde
+      	
+      	// Si la date heure est valide, il faut la renvoyer
+      	SI DateHeureValide(dhDateHeure) ALORS RENVOYER dhDateHeure
+      	
+      FIN
+      
+      // Format AAAA-MM-JJTHH:mm:SS+01:00 (2015-07-13T14:15:10+03:00)
+      SI VérifieExpressionRégulière(ChaîneVersUTF8(sValeurBalise), ChaîneVersUTF8("([0-9]{4,4})-([0-9]{2,2})-([0-9]{2,2})T([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2})(\+|-)([0-9]{2,2}):([0-9]{2,2})"),nAnnée, nMois, nJour, nHeure, nMinute, nSeconde, sSigneDécalage, sHeureDécalage, sMinuteDécalage) ALORS
+      	
+      	dhDateHeure..Jour = nJour
+      	dhDateHeure..Mois = nMois
+      	dhDateHeure..Année = nAnnée
+      	dhDateHeure..Heure = nHeure
+      	dhDateHeure..Minute = nMinute
+      	dhDateHeure..Seconde = nSeconde
+      	
+      	// Ajoute le décalage
+      	SELON sSigneDécalage
+      		CAS "+" : dhDateHeure..Heure -= sHeureDécalage ; dhDateHeure..Minute -= sMinuteDécalage
+      		CAS "-" : dhDateHeure..Heure += sHeureDécalage ; dhDateHeure..Minute += sMinuteDécalage			
+      	FIN
+      	// Repassage en mode locale
+      	dhDateHeure = DateHeureUTCVersLocale(dhDateHeure)
+      	// Si la date heure est valide, il faut la renvoyer
+      	SI DateHeureValide(dhDateHeure) ALORS RENVOYER dhDateHeure
+      	
+      FIN
+      
+      // Format Jjj, JJ Mmm AAAA HH:mm:SS +0100 (Mon, 13 Jul 2015 14:15:10 +0300)
+      SI VérifieExpressionRégulière(ChaîneVersUTF8(sValeurBalise), ChaîneVersUTF8("[a-zA-Z]{3,3}, ([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) (\+|-)([0-9]{2,2})([0-9]{2,2})"),nJour, sMoisEnLettre, nAnnée, nHeure, nMinute, nSeconde, sSigneDécalage, sHeureDécalage, sMinuteDécalage) ALORS
+      	
+      	dhDateHeure..Jour = nJour
+      	// Convertit le mois à partir des lettres
+      	dhDateHeure..Mois = _MoisLettreVersMoisEntier(sMoisEnLettre)
+      	dhDateHeure..Année = nAnnée
+      	dhDateHeure..Heure = nHeure
+      	dhDateHeure..Minute = nMinute
+      	dhDateHeure..Seconde = nSeconde
+      	
+      	// Ajoute le décalage
+      	SELON sSigneDécalage
+      		CAS "+" : dhDateHeure..Heure -= sHeureDécalage ; dhDateHeure..Minute -= sMinuteDécalage
+      		CAS "-" : dhDateHeure..Heure += sHeureDécalage ; dhDateHeure..Minute += sMinuteDécalage			
+      	FIN
+      	// Repassage en mode locale
+      	dhDateHeure = DateHeureUTCVersLocale(dhDateHeure)
+      	// Si la date heure est valide, il faut la renvoyer
+      	SI DateHeureValide(dhDateHeure) ALORS RENVOYER dhDateHeure
+      	
+      FIN
+      
+      
+      
+      
+      // Format JJ Mmm AAAA HH:mm:SS +0100 (13 Jul 2015 14:15:10 +0300)
+      SI VérifieExpressionRégulière(ChaîneVersUTF8(sValeurBalise), ChaîneVersUTF8("([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) (\+|-)([0-9]{2,2})([0-9]{2,2})"),nJour, sMoisEnLettre, nAnnée, nHeure, nMinute, nSeconde, sSigneDécalage, sHeureDécalage, sMinuteDécalage) ALORS
+      	
+      	dhDateHeure..Jour = nJour
+      	// Convertit le mois à partir des lettres
+      	dhDateHeure..Mois = _MoisLettreVersMoisEntier(sMoisEnLettre)
+      	dhDateHeure..Année = nAnnée
+      	dhDateHeure..Heure = nHeure
+      	dhDateHeure..Minute = nMinute
+      	dhDateHeure..Seconde = nSeconde
+      	
+      	// Convertit le mois à partir des lettres
+      	dhDateHeure..Mois = _MoisLettreVersMoisEntier(sMoisEnLettre)
+      	// Ajoute le décalage
+      	SELON sSigneDécalage
+      		CAS "+" : dhDateHeure..Heure -= sHeureDécalage ; dhDateHeure..Minute -= sMinuteDécalage
+      		CAS "-" : dhDateHeure..Heure += sHeureDécalage ; dhDateHeure..Minute += sMinuteDécalage			
+      	FIN
+      	// Repassage en mode locale
+      	dhDateHeure = DateHeureUTCVersLocale(dhDateHeure)
+      	// Si la date heure est valide, il faut la renvoyer
+      	SI DateHeureValide(dhDateHeure) ALORS RENVOYER dhDateHeure
+      	
+      FIN
+      
+      sAbrevFuseauHoraire est une chaine
+      //Format Mon, 13 Jul 2015 14:15:10 AbrévFuseau (Fri, 30 Oct 2015 02:17:02 PDT) >> on convertit l'abréviation du fuseau avec son décalage UTC pour rebondir sur le format suivant  JJ Mmm AAAA HH:mm:SS +0100 (13 Jul 2015 14:15:10 +0300), qui est résolu juste après dans le code 
+      SI VérifieExpressionRégulière(ChaîneVersUTF8(sValeurBalise), ChaîneVersUTF8("[a-zA-Z]{3,3}, ([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) ([A-Z]{3,5})"),nJour, sMoisEnLettre, nAnnée, nHeure, nMinute, nSeconde, sAbrevFuseauHoraire) ALORS
+      	
+      	duDuréeDécalage est une duree = _ZoneVersDécalage(sAbrevFuseauHoraire)
+      	
+      	dhDateHeure..Jour = nJour
+      	// Convertit le mois à partir des lettres
+      	dhDateHeure..Mois = _MoisLettreVersMoisEntier(sMoisEnLettre)
+      	dhDateHeure..Année = nAnnée
+      	dhDateHeure..Heure = nHeure
+      	dhDateHeure..Minute = nMinute
+      	dhDateHeure..Seconde = nSeconde
+      	
+      	
+      	// Ajoute le décalage
+      	dhDateHeure = dhDateHeure - duDuréeDécalage
+      	 
+      	// Repassage en mode locale
+      	dhDateHeure = DateHeureUTCVersLocale(dhDateHeure)
+      	// Si la date heure est valide, il faut la renvoyer
+      	SI DateHeureValide(dhDateHeure) ALORS RENVOYER dhDateHeure
+      	
+      	
+      fin
+      
+      
+      
+      // Format Jjj, JJ Mmm AAAA HH:mm:SS +0100 (Mon, 13 Jul 2015 14:15:10 +0300)
+      SI VérifieExpressionRégulière(ChaîneVersUTF8(sValeurBalise), ChaîneVersUTF8("[a-zA-Z]{3,3}, ([0-9]{2,2}) ([a-zA-Z]{3,3}) ([0-9]{4,4}) ([0-9]{2,2}):([0-9]{2,2}):([0-9]{2,2}) (\+|-)([0-9]{2,2})([0-9]{2,2})"),nJour, sMoisEnLettre, nAnnée, nHeure, nMinute, nSeconde, sSigneDécalage, sHeureDécalage, sMinuteDécalage) ALORS
+      	
+      	
+      	dhDateHeure..Jour = nJour
+      	// Convertit le mois à partir des lettres
+      	dhDateHeure..Mois = _MoisLettreVersMoisEntier(sMoisEnLettre)
+      	dhDateHeure..Année = nAnnée
+      	dhDateHeure..Heure = nHeure
+      	dhDateHeure..Minute = nMinute
+      	dhDateHeure..Seconde = nSeconde
+      	
+      	
+      	// Ajoute le décalage
+      	SELON sSigneDécalage
+      		CAS "+" : dhDateHeure..Heure -= sHeureDécalage ; dhDateHeure..Minute -= sMinuteDécalage
+      		CAS "-" : dhDateHeure..Heure += sHeureDécalage ; dhDateHeure..Minute += sMinuteDécalage			
+      	FIN
+      	// Repassage en mode locale
+      	dhDateHeure = DateHeureUTCVersLocale(dhDateHeure)
+      	// Si la date heure est valide, il faut la renvoyer
+      	SI DateHeureValide(dhDateHeure) ALORS RENVOYER dhDateHeure
+      	
+      FIN
+      
+      // Si la date heure a un format inconnu, renvoie la date heure par défaut qui correspond à maintenant
+      RENVOYER dhDateHeure
+      
+      
+      
+      
+     type : 458752
+   -
+     name : _MoisLettreVersMoisEntier
+     internal_properties : CAAAAAgAAADM6G1vKNFBoxCdcP4nEP9LRx9m/x+Nq3NqILbZlDUpABLZsX0O3pqQExHOlTE5LcVSv7gDOhTJu2GDHZ8K6lMZv65QkS1S69koQknVo/ophLaFODh7LA6c+1colOFZ/AnQqu9cJk5Z4w1El7Dp5NoSdGOVItWcjsdCxGOar9ZxLcxFUmzXsnM927Z5KMvcrfu2/lbxQgmlzZ6m7MmT8xK1mRy98MxSuKRVAlMnraQTOLLvGDiA2fptF0WEKrDVhwAGNS7vYumZenKna0OuSoE1sFZ5r9SSjLQF4Utz5jiOKYpI/aUnqJKeVA==
+     procedure_id : 1559332179419709873
+     type_code : 15
+     code : |1+
+      // Résumé : Retourne le numéro de mois correspondant au texte
+      
+      PROCEDURE PRIVE _MoisLettreVersMoisEntier(sMoisLettre)
+      
+      SELON sMoisLettre
+      	CAS "Jan":
+      		RENVOYER 1
+      	CAS "Feb":
+      		RENVOYER 2
+      	CAS "Mar":
+      		RENVOYER 3
+      	CAS "Apr":
+      		RENVOYER 4
+      	CAS "May":
+      		RENVOYER 5
+      	CAS "Jun":
+      		RENVOYER 6
+      	CAS "Jul":
+      		RENVOYER 7
+      	CAS "Aug":
+      		RENVOYER 8
+      	CAS "Sep":
+      		RENVOYER 9
+      	CAS "Oct":
+      		RENVOYER 10
+      	CAS "Nov":
+      		RENVOYER 11
+      	CAS "Dec":
+      		RENVOYER 12
+      	AUTRE CAS:
+      		Erreur(<§@1b58609e001bb3ce0000§>)
+      		RENVOYER 0
+      FIN
+      
+     type : 458752
+   -
+     name : _extraitImageBillet
+     internal_properties : CAAAAAgAAADR0s45nGfRmUb1hSWiBJZpL/86+YM8pyeHgD5fE50Fo+bKDh9RrD8lGukZ0pNznvxIp1pdnBd0D8RGojBNQuhQlghNGbqQ67JgfTQasiv/G6KL5p8VC4xIE4p5AM7yT+HbCQlqNgDFpNmKM8izQvSZi5eqnbEI+CgeGq/sC9+tD7YJQtDfy7n60YZt8b7k7KJsTJE+ky/uqZfdt/evNEaGPYfszoiPQFPlnQDcOErzd+cEdf2MsdFjYTNija+LYVAP/my1tIJ+A72H//JnfhxuO+Yu8xw7Wx3BF2HSJ9MS6AgnEqre61GIJo+m2ZmN2F1qSclMs4zJ
+     procedure_id : 1559332179419775409
+     type_code : 15
+     code : |1+
+      // Résumé : Extrait une image du billet s'il y en a une
+      
+      PROCEDURE PRIVÉE _extraitImageBillet(LOCAL sResultatHTTP, LOCAL nPosDebut, LOCAl nPosFin, LOCAL nIDFluxRSS)
+      
+      // Variable
+      nEncloPos  est un entier
+      nTypPos    est un entier
+      nPosURL    est un entier
+      nPosFinURL est un entier
+      sURL       est une chaine
+      sChemin    est une chaine = frepdonnees() + [fsep()] + nIDFluxRSS + "_image" + DonneIdentifiant() + ".tmp"
+      nPosTaille est un entier
+      nPosFinTaille est un entier
+      nTaille    est un entier
+      
+      sResultatHTTP = XMLVersTexte(sResultatHTTP)
+      
+      nEncloPos = Position(sResultatHTTP, "<enclosure", nPosDebut, SansCasse)
+      SI nEncloPos <> 0 et nEncloPos < nPosFin ALORS
+      	
+      	// C'est un type image ?
+      	nTypPos = Position(sResultatHTTP, "type=""image", nEncloPos, SansCasse)
+      	
+      	// Extrait l'URL qui pointe vers l'image
+      	SI nTypPos <> 0 ALORS
+      		
+      		// Extrait la taille
+      		nPosTaille = Position(sResultatHTTP,"length=",nTypPos,SansCasse)
+      		SI nPosTaille <> 0 ALORS
+      			nPosFinTaille = Position(sResultatHTTP,"""",nPosTaille+10,SansCasse)
+      			nTaille = sResultatHTTP[[nPosTaille+Taille("length=")+1 A nPosFinTaille-1]]
+      		FIN
+      		
+      		Si nTaille < 200000 ALORS
+      			nPosURL = Position(sResultatHTTP, "url=""", nEncloPos, SansCasse)	
+      			// Début et fin de l'URL
+      			nPosURL = Position(sResultatHTTP, """", nPosURL, SansCasse)
+      			nPosFinURL = Position(sResultatHTTP, """", nPosURL+1, SansCasse)
+      			
+      			sURL = sResultatHTTP[[nPosURL+1 A nPosFinURL-1]]
+      			
+      			HTTPDestination(sChemin)
+      			HTTPRequête(sURL)
+      			SI ErreurDétectée() ALORS
+      				sChemin = ""
+      			SINON
+      				//				SI fTaille(sChemin) > 200000 ALORS
+      				//					fSupprime(sChemin)
+      				//					sChemin = ""
+      				//				FIN
+      			FIN
+      		SINON
+      			sChemin = ""
+      		FIN
+      	SINON
+      		sChemin = ""
+      	FIN
+      	
+      	si sChemin <> "" alors 
+      		RENVOYER sChemin
+      	sinon
+      		sChemin = frepdonnees() + [fsep()] + nIDFluxRSS + "_image" + DonneIdentifiant() + ".tmp"
+      	FIN
+      	
+      fin
+      
+      
+      //	nContentEncodedPos est un entier = Position(sResultatHTTP, "<content:encoded>", nPosDebut, SansCasse)
+      //	si nContentEncodedPos <> 0 et nContentEncodedPos < nPosFin ALORS
+      // C'est un type image ?
+      nPosIMG est un entier = Position(sResultatHTTP, "<img ", nPosDebut, SansCasse)
+      
+      SI nPosIMG  >= nPosFin ALORS
+      	renvoyer ""		
+      FIN
+      
+      SI nPosIMG <> 0 ALORS
+      	nPosFinIMG est un entier = Position(sResultatHTTP, ">" ,nPosIMG+1+Taille("<img ") , SansCasse)
+      	nPosURL= Position(sResultatHTTP, "src=""", nPosIMG, SansCasse)
+      	nPosFinURL = Position(sResultatHTTP, """", nPosURL + taille("src=""") + 1, SansCasse)
+      	
+      	si nPosURL < nPosFinIMG alors
+      		sURL = sResultatHTTP[[nPosURL+Taille( "src=""") A nPosFinURL-1]]
+      		
+      		HTTPDestination(sChemin)
+      		HTTPRequête(sURL)
+      		SI ErreurDétectée() ALORS
+      			sChemin = ""
+      		SINON
+      			//Vérification de la validité du fichier image
+      			si ftaille(sChemin) < 2000 ALORS
+      				fSupprime(sChemin)
+      				sChemin = ""
+      			FIN
+      		FIN
+      	SINON
+      		sChemin =""		
+      	fin
+      	
+      sinon
+      	sChemin =""
+      FIN
+      
+      
+      RENVOYER sChemin
+     type : 458752
+   -
+     name : _extraitImageFlux
+     internal_properties : CAAAAAgAAAD30a7CqA3rc/j/uxvsGuIbeWe//gSrMXmHENgcdYiNZs9Vw1seauD/Sjg90QiyCeLS0TThRZa/VOlmMXioES4KIcb4b4qs4RNbvItb78A0xQ9tK7uik3jf6lisbBqY+VEygVtyvTmu4z1dBjhUpM7Fa0wuen9uEjwaxvwqsrbQnmIh+JpsyobvRGaWRuV2/ydpoc3eqxNBZZjEG46/ri+xKeFWpHT0gXoc4If87KMDd6J5L/xell3ivtsqnSBIMc+DL3fRPnaOcduvQw3/szGJcbuMnt4WiZMLf9no/GFsTpn3kRrkxltJtXEDF4QmR/8I7nUDC2BQ7Rf3XTuKCOtq5htfdx7NOlME3+cZLFv05Z0vlXYNfXxdkvIZ/Osycs4uIo3uDIc=
+     procedure_id : 1559332179419906481
+     type_code : 15
+     code : |1-
+      // Résumé : Récupère l'image associé à un flux RSS
+      
+      PROCEDURE PRIVE _extraitImageFlux(sResultatHTTP est une chaine)
+      
+      // Variable
+      bufImage   est un Buffer
+      nImagePos  est un entier
+      nFirstBillet  est un entier
+      nPosURL    est un entier
+      nPosFinURL est un entier
+      sURL       est une chaine
+      sFavIcon   est une chaine
+      sResultat  est une chaine
+      sHeader    est une chaine
+      
+      nFirstBillet = Position(sResultatHTTP, "<item>", 1, SansCasse)
+      
+      // Pas d'image ? On va essayer de choper le favicon du site
+      sURL = ""
+      SI bufImage = "" ALORS
+      	nPosURL = Position(sResultatHTTP,"<link>",1, SansCasse)
+      	
+      	// Récupère l'adresse du site
+      	SI nPosURL <> 0 ET nPosURL < nFirstBillet ALORS
+      		// Fin de la balise
+      		nPosFinURL = Position(sResultatHTTP,"</link>",1, SansCasse)
+      		
+      		sURL = sResultatHTTP[[nPosURL + Taille("<link>") A nPosFinURL - 1]]
+      		
+      		// Récupère le résultat
+      		HTTPRequête(sURL)
+      		
+      		SI PAS ErreurDétectée() ALORS
+      			sResultat = HTTPDonneRésultat()
+      		FIN
+      		
+      		// Recherche du favicon
+      		nImagePos = Position(sResultat, "image/x-icon", 1, SansCasse)
+      		nPosBaliseFermante est un entier = Position(sResultat, ">", nImagePos, SansCasse)
+      		
+      		// Y a t il un favicon ?
+      		SI nImagePos <> 0 ALORS
+      			nPos est un entier = nPosBaliseFermante
+      			// Remonte pour chercher le href
+      			TANTQUE nPos > 0
+      				
+      				// Fin de la balise, inutile de continuer à remonter
+      				SI sResultat[[nPos]] = "<" ALORS
+      					SORTIR
+      				FIN
+      				
+      				SI sResultat[[nPos A nPos + Taille("href=""") - 1]] = "href=""" ALORS
+      					nPosURL    = nPos + Taille("href=""")
+      					nPosFinURL = Position(sResultat,"""",nPosURL)
+      					
+      					// On a trouvé le lien !	
+      					sFavIcon = sResultat[[nPosURL A nPosFinURL - 1]]
+      					
+      					// On a trouvé
+      					SI PAS sFavIcon ~= "" ALORS
+      						SI sFavIcon [= "http" ALORS
+      							HTTPRequête(sFavIcon)
+      							SI PAS ErreurDétectée() ALORS
+      								bufImage = HTTPDonneRésultat()
+      							FIN
+      						SINON
+      							// URL relative, il faut la reconstruire
+      							sURL = sURL + sFavIcon
+      							HTTPRequête(sURL)
+      							
+      							SI PAS ErreurDétectée() ALORS
+      								bufImage = HTTPDonneRésultat()
+      							FIN
+      						FIN
+      					FIN
+      					
+      					SORTIR
+      				FIN
+      				
+      				nPos--
+      			FIN
+      		SINON
+      			// Recherche du favicon à la racine du site !
+      			
+      			// Recherche le premier caractère / (après ceux de http://)
+      			nPosURL    = Position(sURL,"://",1)
+      			nPosFinURL = Position(sURL, "/", nPosURL + Taille("://"))
+      			
+      			SI nPosURL <> 0 ALORS
+      				SI nPosFinURL <> 0 ALORS
+      					sURL = sURL[[1 A nPosFinURL]]
+      				FIN
+      				
+      				// Construit l'URL de l'icone
+      				sURL = sURL + ["/"] + "favicon.ico"
+      				
+      				HTTPRequête(sURL)
+      				
+      				SI PAS ErreurDétectée() ALORS
+      					// Vérifie que c'est OK dans l'entête
+      					sHeader = HTTPDonneRésultat(HTTPEntête)
+      					sHeader = ExtraitChaîne(sHeader,1,RC)
+      					
+      					SI Position(sHeader,"200") > 0 ALORS
+      						// Récupère l'image
+      						bufImage = HTTPDonneRésultat(httpRésultat)				
+      					FIN
+      				FIN
+      			FIN
+      		FIN
+      	FIN
+      
+      FIN
+      
+      RENVOYER bufImage
+     type : 458752
+   -
+     name : _ReEnregistreImage
+     internal_properties : CAAAAAgAAAC6ixVfW1Y+Me6CD7gvCauu6JHWFSqXGfy1m9oU8MHwt/Yj8TFXW3HkabarOfhwdiksGwWg2gS9POubyPL7ekW4nRsfiCzCq147tJpl96pTWJ+813qRJLMoCuRxck/Co3I31K51Flsoc3S2ngVh
+     procedure_id : 1559332179419972017
+     type_code : 15
+     code : |1+
+      // Résumé : Re-enregistre l'image pour le billet en cours
+      
+      PROCEDURE PRIVE _ReEnregistreImage()
+      
+      Si BILLET.image <> "" ALORS
+      	
+      	sDestination est une chaine = ComplèteRep(frepDonnees()) + Billet.IDBillet + "_img.tmp"
+      	
+      	// Copie
+      	si fRenomme(Billet.Image, sDestination) = vrai alors
+      		// Enregistre
+      		Billet.Image = sDestination
+      		HModifie(Billet)
+      	fin
+      FIN
+     type : 458752
+   -
+     name : getMsgErreur
+     procedure_id : 1559332179420037553
+     type_code : 15
+     code : |1-
+      // Résumé : Retourne le message d'erreur
+      // Syntaxe :
+      //[ <Résultat> = ] getMsgErreur ()
+      
+      PROCEDURE getMsgErreur()
+      
+      RENVOYER gsMsgErr
+     type : 458752
+   -
+     name : getErreurDetecte
+     procedure_id : 1559332179420103089
+     type_code : 15
+     code : |1+
+      // Résumé : Retourne si une erreur a été détecté
+      
+      PROCEDURE getErreurDetecte()
+      
+      bErreur est un booléen = gbErreur
+      
+      gbErreur = Faux
+      
+      RENVOYER bErreur
+      
+     type : 458752
+   -
+     name : formateContenu
+     procedure_id : 1559332179420168625
+     type_code : 15
+     code : |1+
+      // Résumé : Formate le contenu
+      
+      PROCEDURE formateContenu(LOCAL sContenu est une chaine)
+      
+      // Variable
+      sContenuFormate est une chaine
+      
+      sContenuFormate = ChaîneFormate(sContenu,ccSansEspace)
+      sContenuFormate = Remplace(sContenuFormate, RC, " ")
+      
+      RENVOYER [rc] + sContenuFormate
+      
+     type : 458752
+   -
+     name : billetHTML
+     internal_properties : CAAAAAgAAACio311w3Tsjd7uLzhXzbPuaLVaJZr34WhFv5rkaDXAjyZf1cmfG6locVLb2SDk5gHUz+Gg2txLXsmxDvDlxIN208FJ3r6kSWgxOjDL+fSZLj2ScchbFql6iOJHYBlseUBt4kADuB2o/Vquhh15
+     procedure_id : 1559332179420234161
+     type_code : 15
+     code : |1-
+      // Résumé : Formate le billet au format HTML
+      // Syntaxe :
+      //[ <Résultat> = ] billetHTML (<sContenu>)
+      
+      PROCEDURE billetHTML(LOCAL sContenu)
+      
+      // Variable
+      sStyle  est une chaine = [
+      	<html>
+      	<style type="text/css">
+      	body {background-color : #F3F3F3}
+      	</style>
+      	<font color="#000000" face="Droid sans" size="3">%1</font>
+      	</html>
+      ]
+      
+      
+      
+      // Formatage
+      sContenu = Remplace(sContenu,RC,"<br>")
+      
+      RENVOYER ChaîneConstruit(sStyle, sContenu)
+     type : 458752
+   -
+     name : fluxAjouteBD
+     procedure_id : 1559332179420299697
+     type_code : 15
+     code : |1+
+      // Résumé : Ajoute un flux RSS en base
+      PROCEDURE fluxAjouteBD(sURL, sImage EST UNE buffer = null)
+      
+      // Vérifie si ce flux n'existe pas déjà
+      HLitRecherchePremier(FluxRSS, Adresse, sURL)
+      SI HTrouve(FluxRSS) = Vrai ALORS
+      	Erreur(<§@1b58609e001bb3ce0003§>)
+      	RENVOYER Faux
+      FIN
+      
+      //On va ajouter un nouveau flux à suivre
+      
+      // Ajoute un flux en base
+      HRAZ(FluxRSS)
+      FluxRSS.Adresse         = sURL
+      FluxRSS.Image        	= sImage
+      si pas HAjoute(FluxRSS) ALORS
+      	erreur("Ajout du flux en erreur", herreurinfo())
+      	renvoyer faux
+      FIN
+      
+      
+      RENVOYER Vrai
+     type : 458752
+   -
+     name : _TraiterRedirection
+     internal_properties : CAAAAAgAAADUL9CmsRAKIfaGO2WqGgu+g3Dk/FKPeW50bsBFheBS3xJHQYwJVgTlfCRWiDaiFWrIcDRlNkIBw6QwQT58KGyRAzTqAsSeExJqYv42wEl64YJfRSF5gjdU0L1YUvcQgisn7o0fwMWJwvTnIglwtDVcad9rLpTpzHNsYWCKSf2DshrE9q4bism0WD1vTUBAufstXvn0L6Q=
+     procedure_id : 1559332179420365233
+     type_code : 15
+     code : |1+
+      // Résumé : Traite les redirections HTML
+      
+      PROCEDURE PRIVE _TraiterRedirection(LOCAL sURLBase est une chaine, sContenuHTML est une chaine, sEntete est une chaine)
+      
+      // Variable
+      sContenu    est une chaine = sContenuHTML
+      sURL        est une chaine
+      nPosition   est un entier
+      nCodeRetour est un entier
+      
+      // Redirection par Meta ?
+      SI ChaîneOccurrence(sContenuHTML,BALISE_REDIRECTION,SansCasse)  > 0 ALORS
+      	nPosition = Position(sContenuHTML,BALISE_REDIRECTION,1, SansCasse)
+      	
+      	nPosition = nPosition + Taille(BALISE_REDIRECTION) + 6 // Ajout de la taille de la balise + les 5 caractères qui définissent la syntaxe du temps de redirection
+      	TANTQUE (sContenuHTML[[nPosition]] <> """") ET (nPosition <= Taille(sContenuHTML))
+      		sURL +=  sContenuHTML[[nPosition]]	
+      		nPosition++
+      	FIN
+      	
+      	// Récupération du contenu de la redirection
+      	SI sURL [= "=" ALORS sURL = sURL[[2 A]]
+      	
+      	// Lien relatif ?
+      	SI PAS (sURL [= FORMAT_HTTP) ET (PAS (sURL [= FORMAT_HTTPS)) ALORS
+      		// Rajoute l'URL origine
+      		sURL = sURLBase + sURL
+      	FIN
+      	
+      	SI HTTPRequête(sURL) ALORS
+      		sContenu = HTTPDonneRésultat()
+      	SINON
+      		RENVOYER ""
+      	FIN
+      FIN
+      
+      // Redirection par 301 ou 302 ?
+      nCodeRetour = Val(ExtraitChaîne(sEntete,2," "))
+      SI (nCodeRetour = CODE_301) OU (nCodeRetour = CODE_302) ALORS
+      	sURL = SansEspace(ExtraitChaîne(ExtraitChaîne(sEntete,2,RC+"Location:"),1,RC))
+      	
+      	SI (sURL [= FORMAT_HTTP) _OU_ (sURL [= FORMAT_HTTPS) ALORS	
+      		// Récupération du contenu de la redirection
+      		SI HTTPRequête(sURL) ALORS
+      			sContenu = HTTPDonneRésultat()
+      			SI sContenu <> "" ALORS
+      				// Redirection par META dans le nouveau contenu ?
+      				SI ChaîneOccurrence(sContenu,BALISE_REDIRECTION,SansCasse)  > 0 ALORS
+      					sURL = ""
+      					nPosition = Position(sContenu,BALISE_REDIRECTION,1,SansCasse)
+      					
+      					nPosition = nPosition + Taille(BALISE_REDIRECTION) + 6 // Ajout de la taille de la balise + les 5 caractères qui définissent la syntaxe du  temps de redirection
+      					TANTQUE (sContenu[[nPosition]] <> """") ET (nPosition <= Taille(sContenu))
+      						sURL +=  sContenu[[nPosition]]	
+      						nPosition++
+      					FIN
+      					
+      					// Récupération du contenu de la redirection
+      					SI sURL [= "=" ALORS sURL = sURL[[2 A]]
+      					
+      					// Lien relatif ?
+      					SI PAS (sURL [= FORMAT_HTTP) ET (PAS (sURL [= FORMAT_HTTPS)) ALORS
+      						// Rajoute l'URL origine
+      						sURL = sURLBase + sURL
+      					FIN
+      					
+      					SI HTTPRequête(sURL) ALORS
+      						sContenu = HTTPDonneRésultat()
+      					SINON
+      						sContenu = ""
+      					FIN
+      				FIN
+      			FIN
+      		FIN
+      	FIN
+      FIN
+      
+      RENVOYER sContenu
+      
+      
+     type : 458752
+   -
+     name : getNbBilletNonLus
+     procedure_id : 1559332179420561841
+     type_code : 15
+     code : |1-
+      // Résumé : Retourne le nombre de billets non lus
+      
+      PROCEDURE getNbBilletNonLus(LOCAL nIDFluxRSS est un entier)
+      
+      nPosBillet est un entier = HSauvePosition(Billet)
+      nPosFlux   est un entier = HSauvePosition(FluxRSS)
+      
+      // Variables
+      nNbNonLus est un entier = 0
+      
+      HFiltre(Billet,IDFluxRSS,nIDFluxRSS)
+      HLitPremier(Billet,IDFluxRSS,hRespecteFiltre)
+      TANTQUE PAS HEnDehors(Billet)
+      	SI Billet.Lu = Faux ALORS
+      		nNbNonLus++	
+      	FIN
+      	HLitSuivant(Billet,IDFluxRSS)
+      FIN
+      
+      RENVOYER nNbNonLus
+      
+      FIN:
+      	HDésactiveFiltre(Billet)
+      	HRetourPosition(nPosBillet)
+      	HRetourPosition(nPosFlux)
+     type : 458752
+   -
+     name : RécupèreBilletsFluxRSS
+     internal_properties : CAAAAAgAAAAroLg7oEc5L9/vnSgTkA38ND7woWlpxHaMVcGPPFVxsSzUXPg0l6LC8XuvOJsxkDugSXB2G9Oxsyyj3ErBhvUOTayVhzObu3uaKheW5P+HDFry0Dy6HEBAaxtAaSBTVE9rJQoS0KASLUwgysNfzHZ1pBHFvH1FhPaYpLbIOFUSaE9SSMkhY4UWCApdu/gHt+KlOpgT3eSJt8Hk0FWcTCwlbdaq4tFcJ8yDndHTvsKmnkLKGhD72Bf+DTU=
+     procedure_id : 1559332948219756248
+     type_code : 15
+     code : |1-
+      // Résumé : Récupère sur Internet les billets du flux
+      // // Traitement automatique des exceptions :   exécuter le bloc de code CAS EXCEPTION:
+      //
+      // Procédure automatique :
+      // La procédure est exécutée manuellement, lors d'un appel dans le code
+      // Elle s'exécutera dans un thread (sans avoir besoin d'appeler la fonction ThreadExecute), avec utilisation de HFSQL (copie complète du contexte)
+      // 
+      
+      PROCEDURE RécupèreBilletsFluxRSS(stFluxRSS est une structFluxRSS, nIDFluxRSS est un entier,  stCallback est une STCallback)
+      
+      
+      
+      tmpBillet     est une structBillet
+      nPosDebut     est un entier
+      nPosFin       est un entier
+      sDateHeure    est une chaine
+      bAjoute est un booleen
+      
+      sResultatHTTP est une chaine = stFluxRSS.sResultatHTTP
+      
+      // Parcours les billets
+      nNbreBillet est un entier
+      nPosDebut = Position(sResultatHTTP, BALISE_BILLET_OUVRE, 1, SansCasse)
+      TANTQUE nPosDebut <> 0
+      	
+      	si nNbreBillet = MAX_NBRE_BILLETS alors sortir 
+      	
+      	// Recherche la fin du billet
+      	nPosFin = Position(sResultatHTTP, BALISE_BILLET_FERME, nPosDebut, SansCasse)
+      	
+      	// Extrait les informations du billet
+      	tmpBillet.sTitre       = _extraitBalise(sResultatHTTP, BALISE_TITRE_OUVRE, BALISE_TITRE_FERME, nPosDebut)
+      	sDateHeure             = _extraitBalise(sResultatHTTP, BALISE_DATE_OUVRE, BALISE_DATE_FERME, nPosDebut)
+      	tmpBillet.dhDateHeure  = _dateConvertie(sDateHeure)
+      	
+      	// Vérifie qu'il n'a pas déjà été importé
+      	HLitRecherchePremier(Billet, DatePublicationTitre, [tmpBillet.dhDateHeure, tmpBillet.sTitre])
+      	SI HTrouve(Billet) = Faux ET SansEspace(tmpBillet.sTitre) <> "" ALORS
+      		bAjoute = Vrai
+      	FIN
+      	
+      	
+      	SI bAjoute = Vrai ET SansEspace(tmpBillet.sTitre ) <> "" ALORS
+      		tmpBillet.sDescription = _extraitBalise(sResultatHTTP, BALISE_DESCRIPTION_OUVRE, BALISE_DESCRIPTION_FERME, nPosDebut)
+      		tmpBillet.sLien        = _extraitBalise(sResultatHTTP, BALISE_LINK_OUVRE, BALISE_LINK_FERME, nPosDebut)
+      		tmpBillet.sImage       = _extraitImageBillet(sResultatHTTP, nPosDebut, nPosFin,nIDFluxRSS)		
+      	FIN
+      	
+      	// Ajoute au tableau
+      	TableauAjoute(stFluxRSS.tabBillet, tmpBillet)	
+      	
+      	// Billet suivant
+      	nPosDebut = Position(sResultatHTTP, BALISE_BILLET_OUVRE, nPosFin, SansCasse)
+      	
+      	nNbreBillet++
+      	
+      FIN
+      
+      // Trie par date Heure
+      TableauTrie(stFluxRSS.tabBillet,ttMembre,"-dhDateHeure")
+      
+      
+      //Suppression des billets anciennement mémorisés, que l'on ne retrouve plus dans le tableau
+      POUR TOUT Billet AVEC IDFluxRSS = nIDFluxRSS
+      	si tableaucherche(stFluxRSS.tabBillet, tcLinéaire, "sTitre;dhDateHeure", billet.titre, billet.DatePublication) < 0 alors
+      		BilletSupprime(Billet.IDBillet)	
+      	FIN
+      FIN
+      
+      // Ajoute les billets récents
+      POUR TOUT ELEMENT stBillet DE stFluxRSS.tabBillet
+      	
+      	// Vérifie qu'il n'a pas déjà été importé
+      	HLitRecherchePremier(Billet, DatePublicationTitre, [stBillet.dhDateHeure, stBillet.sTitre])
+      	
+      	SI HTrouve(Billet) = Faux ALORS
+      		
+      		HRAZ(Billet)
+      		Billet.IDFluxRSS       = nIDFluxRSS
+      		Billet.Description     = stBillet.sDescription
+      		Billet.DatePublication = stBillet.dhDateHeure
+      		Billet.Lu              = Faux
+      		billet.image 		   = stBillet.sImage
+      		Billet.Titre           = stBillet.sTitre
+      		Billet.Lien            = stBillet.sLien
+      		
+      		//Blindage : ici, nous sommes dans une procédure exécutée dans un thread 
+      		//Il est possible que l’utilisateur supprime le flux alors qu'on est en récupération de ce billet
+      		//on a fait appel à FinAutomatismeProcédure avant la suppression du flux mais sous Android la procédure ira qd même jusqu'à son terme, seule la répétition sera stoppée. 
+      		//Donc on blinde ici, si on ne retrouve pas le flux, inutile d'ajouter le billet 		
+      		HLitRecherchePremier(FluxRSS,IDFluxRSS,nIDFluxRSS)
+      		si pas htrouve(FluxRSS) ALORS
+      			retour
+      		FIN
+      		
+      		si pas HAjoute(Billet) ALORS
+      			Erreur("Ajout du billet  en erreur Billet.IDFluxRSS       = " + nIDFluxRSS , HErreurInfo())
+      		FIN
+      		
+      		// Ré-enregistre l'image vers son nom définitif
+      		_ReEnregistreImage()
+      	FIN
+      FIN
+      
+      
+      
+      // Exécution de la callback de réussite
+      SI stCallback.SurRéussite <> "" ALORS
+      	QUAND EXCEPTION DANS
+      		ExécuteThreadPrincipal(stCallback.SurRéussite)	
+      	FAIRE
+      		// Code appelé si la callback n'est plus disponible. 
+      		// Cela peut arriver si la callback est une procédure de fenêtre et que cette dernière est fermée.
+      		Trace(ExceptionInfo)
+      	FIN
+      FIN
+      
+      // Gestion des exceptions
+      
+      CAS EXCEPTION:
+      // Remonte l'exception
+      DéclencheException(stCallback, ERR_EXCEPTIONWL)
+     type : 458752
+   -
+     name : BilletSupprime
+     procedure_id : 1577438589015971825
+     type_code : 15
+     code : |1-
+      PROCEDURE BilletSupprime(LOCAL nIDBillet est un entier)
+      
+      hlitrecherchepremier(billet, IDBillet, nIDBillet)
+      
+      si htrouve(Billet) ALORS
+      	
+      	//Suppression sur le disque de l'image illustrant le billet
+      	SI Billet.Image <> "" ALORS fSupprime(Billet.Image)
+      	
+      	HSupprime(Billet)
+      	
+      FIN
+     type : 458752
+   -
+     name : RécupPictoFlux
+     procedure_id : 1606056681949412481
+     type_code : 15
+     code : |1-
+      PROCEDURE RécupPictoFlux(stFluxRSS est un structFluxRSS)
+      
+      
+      
+      //Récup des images des flux pour les flux prédéfinis
+      POUR TOUT FluxPredefini 
+      	
+      	
+      	HTTPRequête(FluxPredefini.URL)
+      	
+      	bufResultatHTTP est un buffer = HTTPDonneRésultat(httpRésultat)
+      	
+      	
+      	// Résultat en UTF8 ?
+      	SI ChaîneOccurrence(bufResultatHTTP, "ISO-8859-1", SansCasse) = 0 ALORS
+      		bufResultatHTTP = UTF8VersChaîne(bufResultatHTTP)
+      	SINON
+      		bufResultatHTTP = AnsiVersUnicode(bufResultatHTTP)
+      	FIN
+      	
+      	
+      	sEntete    est une chaine   = HTTPDonneRésultat(httpEntête)
+      	sResultatHTTP est une chaine = bufResultatHTTP
+      	sResultatHTTP = _TraiterRedirection(FluxPredefini.URL,sResultatHTTP,sEntete)
+      	
+      	stFluxRSS.bufImage     = _extraitImageFlux(sResultatHTTP)
+      	
+      	
+      	FluxPredefini.Image = stFluxRSS.bufImage    
+      	
+      	
+      	HModifie(FluxPredefini)
+      FIN
+     type : 458752
+   -
+     name : _ZoneVersDécalage
+     procedure_id : 1606074291315625634
+     type_code : 15
+     code : |1+
+      //
+      PROCEDURE PRIVÉ _ZoneVersDécalage(LOCAL sZone est une chaîne) : Durée
+      
+      duDuréeDécalage est une Durée
+      
+      SELON sZone
+      	CAS "ACDT"
+      		duDuréeDécalage = "0103000000"
+      	CAS "ACST"
+      		duDuréeDécalage = "0093000000"
+      	CAS "ACT"
+      		duDuréeDécalage = "-0050000000"
+      	CAS "ADT"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "AEDT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "AEST"
+      		duDuréeDécalage = "0100000000"
+      	CAS "AFT"
+      		duDuréeDécalage = "0043000000"
+      	CAS "AKDT"
+      		duDuréeDécalage = "-0080000000"
+      	CAS "AKST"
+      		duDuréeDécalage = "-0090000000"
+      	CAS "AMST"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "AMT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "ART"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "AST"
+      		duDuréeDécalage = "0030000000"
+      	CAS "AWDT"
+      		duDuréeDécalage = "0090000000"
+      	CAS "AWST"
+      		duDuréeDécalage = "0080000000"
+      	CAS "AZOST"
+      		duDuréeDécalage = "-0010000000"
+      	CAS "AZT"
+      		duDuréeDécalage = "0040000000"
+      	CAS "BDT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "BIOT"
+      		duDuréeDécalage = "0060000000"
+      	CAS "BIT"
+      		duDuréeDécalage = "-0120000000"
+      	CAS "BOT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "BRST"
+      		duDuréeDécalage = "-0020000000"
+      	CAS "BRT"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "BST"
+      		duDuréeDécalage = "0060000000"
+      	CAS "BTT"
+      		duDuréeDécalage = "0060000000"
+      	CAS "CAT"
+      		duDuréeDécalage = "0020000000"
+      	CAS "CCT"
+      		duDuréeDécalage = "0063000000"
+      	CAS "CDT"
+      		duDuréeDécalage = "-0050000000"
+      	CAS "CEDT"
+      		duDuréeDécalage = "0020000000"
+      	CAS "CEST"
+      		duDuréeDécalage = "0020000000"
+      	CAS "CET"
+      		duDuréeDécalage = "0010000000"
+      	CAS "CHADT"
+      		duDuréeDécalage = "0134500000"
+      	CAS "CHAST"
+      		duDuréeDécalage = "0124500000"
+      	CAS "CHOT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "ChST"
+      		duDuréeDécalage = "0100000000"
+      	CAS "CHUT"
+      		duDuréeDécalage = "0100000000"
+      	CAS "CIST"
+      		duDuréeDécalage = "-0080000000"
+      	CAS "CIT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "CKT"
+      		duDuréeDécalage = "-0100000000"
+      	CAS "CLST"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "CLT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "COST"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "COT"
+      		duDuréeDécalage = "-0050000000"
+      	CAS "CST"
+      		duDuréeDécalage = "-0060000000"
+      	CAS "CT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "CVT"
+      		duDuréeDécalage = "-0010000000"
+      	CAS "CWST"
+      		duDuréeDécalage = "0084500000"
+      	CAS "CXT"
+      		duDuréeDécalage = "0070000000"
+      	CAS "DAVT"
+      		duDuréeDécalage = "0070000000"
+      	CAS "DDUT"
+      		duDuréeDécalage = "0100000000"
+      	CAS "DFT"
+      		duDuréeDécalage = "0010000000"
+      	CAS "EASST"
+      		duDuréeDécalage = "-0050000000"
+      	CAS "EAST"
+      		duDuréeDécalage = "-0060000000"
+      	CAS "EAT"
+      		duDuréeDécalage = "0030000000"
+      	CAS "ECT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "EDT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "EEDT"
+      		duDuréeDécalage = "0030000000"
+      	CAS "EEST"
+      		duDuréeDécalage = "0030000000"
+      	CAS "EET"
+      		duDuréeDécalage = "0020000000"
+      	CAS "EGST"
+      		duDuréeDécalage = "0000000000"
+      	CAS "EGT"
+      		duDuréeDécalage = "-0010000000"
+      	CAS "EIT"
+      		duDuréeDécalage = "0090000000"
+      	CAS "EST"
+      		duDuréeDécalage = "-0050000000"
+      	CAS "FET"
+      		duDuréeDécalage = "0030000000"
+      	CAS "FJT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "FKST"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "FKT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "FNT"
+      		duDuréeDécalage = "-0020000000"
+      	CAS "GALT"
+      		duDuréeDécalage = "-0060000000"
+      	CAS "GAMT"
+      		duDuréeDécalage = "-0090000000"
+      	CAS "GET"
+      		duDuréeDécalage = "0040000000"
+      	CAS "GFT"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "GILT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "GIT"
+      		duDuréeDécalage = "-0090000000"
+      	CAS "GMT"
+      		duDuréeDécalage = "0000000000"
+      	CAS "GST"
+      		duDuréeDécalage = "-0020000000"
+      	CAS "GYT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "HADT"
+      		duDuréeDécalage = "-0090000000"
+      	CAS "HAEC"
+      		duDuréeDécalage = "0020000000"
+      	CAS "HAST"
+      		duDuréeDécalage = "-0100000000"
+      	CAS "HKT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "HMT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "HOVT"
+      		duDuréeDécalage = "0070000000"
+      	CAS "HST"
+      		duDuréeDécalage = "-0100000000"
+      	CAS "IBST"
+      		duDuréeDécalage = "0000000000"
+      	CAS "ICT"
+      		duDuréeDécalage = "0070000000"
+      	CAS "IDT"
+      		duDuréeDécalage = "0030000000"
+      	CAS "IOT"
+      		duDuréeDécalage = "0030000000"
+      	CAS "IRDT"
+      		duDuréeDécalage = "0043000000"
+      	CAS "IRKT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "IRST"
+      		duDuréeDécalage = "0033000000"
+      	CAS "IST"
+      		duDuréeDécalage = "0053000000"
+      	CAS "JST"
+      		duDuréeDécalage = "0090000000"
+      	CAS "KGT"
+      		duDuréeDécalage = "0060000000"
+      	CAS "KOST"
+      		duDuréeDécalage = "0110000000"
+      	CAS "KRAT"
+      		duDuréeDécalage = "0070000000"
+      	CAS "KST"
+      		duDuréeDécalage = "0090000000"
+      	CAS "LHST"
+      		duDuréeDécalage = "0103000000"
+      	CAS "LINT"
+      		duDuréeDécalage = "0140000000"
+      	CAS "MAGT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "MART"
+      		duDuréeDécalage = "-0093000000"
+      	CAS "MAWT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "MDT"
+      		duDuréeDécalage = "-0060000000"
+      	CAS "MET"
+      		duDuréeDécalage = "0010000000"
+      	CAS "MEST"
+      		duDuréeDécalage = "0020000000"
+      	CAS "MHT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "MIST"
+      		duDuréeDécalage = "0110000000"
+      	CAS "MIT"
+      		duDuréeDécalage = "-0093000000"
+      	CAS "MMT"
+      		duDuréeDécalage = "0063000000"
+      	CAS "MSK"
+      		duDuréeDécalage = "0030000000"
+      	CAS "MST"
+      		duDuréeDécalage = "0080000000"
+      	CAS "MUT"
+      		duDuréeDécalage = "0040000000"
+      	CAS "MVT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "MYT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "NCT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "NDT"
+      		duDuréeDécalage = "-0023000000"
+      	CAS "NFT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "NPT"
+      		duDuréeDécalage = "0054500000"
+      	CAS "NST"
+      		duDuréeDécalage = "-0033000000"
+      	CAS "NT"
+      		duDuréeDécalage = "-0033000000"
+      	CAS "NUT"
+      		duDuréeDécalage = "-0110000000"
+      	CAS "NZDT"
+      		duDuréeDécalage = "0130000000"
+      	CAS "NZST"
+      		duDuréeDécalage = "0120000000"
+      	CAS "OMST"
+      		duDuréeDécalage = "0060000000"
+      	CAS "ORAT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "PDT"
+      		duDuréeDécalage = "-0070000000"
+      	CAS "PET"
+      		duDuréeDécalage = "-0050000000"
+      	CAS "PETT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "PGT"
+      		duDuréeDécalage = "0100000000"
+      	CAS "PHOT"
+      		duDuréeDécalage = "0130000000"
+      	CAS "PKT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "PMDT"
+      		duDuréeDécalage = "-0020000000"
+      	CAS "PMST"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "PONT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "PST"
+      		duDuréeDécalage = "-0080000000"
+      	CAS "PYST"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "PYT"
+      		duDuréeDécalage = "-0040000000"
+      	CAS "RET"
+      		duDuréeDécalage = "0040000000"
+      	CAS "ROTT"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "SAKT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "SAMT"
+      		duDuréeDécalage = "0040000000"
+      	CAS "SAST"
+      		duDuréeDécalage = "0020000000"
+      	CAS "SBT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "SCT"
+      		duDuréeDécalage = "0040000000"
+      	CAS "SGT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "SLST"
+      		duDuréeDécalage = "0053000000"
+      	CAS "SRET"
+      		duDuréeDécalage = "0110000000"
+      	CAS "SRT"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "SST"
+      		duDuréeDécalage = "-0110000000"
+      	CAS "SYOT"
+      		duDuréeDécalage = "0030000000"
+      	CAS "TAHT"
+      		duDuréeDécalage = "-0100000000"
+      	CAS "THA"
+      		duDuréeDécalage = "0070000000"
+      	CAS "TFT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "TJT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "TKT"
+      		duDuréeDécalage = "0130000000"
+      	CAS "TLT"
+      		duDuréeDécalage = "0090000000"
+      	CAS "TMT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "TOT"
+      		duDuréeDécalage = "0130000000"
+      	CAS "TVT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "UCT"
+      		duDuréeDécalage = "0000000000"
+      	CAS "ULAT"
+      		duDuréeDécalage = "0080000000"
+      	CAS "USZ1"
+      		duDuréeDécalage = "0020000000"
+      	CAS "UTC"
+      		duDuréeDécalage = "0000000000"
+      	CAS "UYST"
+      		duDuréeDécalage = "-0020000000"
+      	CAS "UYT"
+      		duDuréeDécalage = "-0030000000"
+      	CAS "UZT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "VET"
+      		duDuréeDécalage = "-0043000000"
+      	CAS "VLAT"
+      		duDuréeDécalage = "0100000000"
+      	CAS "VOLT"
+      		duDuréeDécalage = "0040000000"
+      	CAS "VOST"
+      		duDuréeDécalage = "0060000000"
+      	CAS "VUT"
+      		duDuréeDécalage = "0110000000"
+      	CAS "WAKT"
+      		duDuréeDécalage = "0120000000"
+      	CAS "WAST"
+      		duDuréeDécalage = "0020000000"
+      	CAS "WAT"
+      		duDuréeDécalage = "0010000000"
+      	CAS "WEDT"
+      		duDuréeDécalage = "0010000000"
+      	CAS "WEST"
+      		duDuréeDécalage = "0010000000"
+      	CAS "WET"
+      		duDuréeDécalage = "0000000000"
+      	CAS "WIT"
+      		duDuréeDécalage = "0070000000"
+      	CAS "WST"
+      		duDuréeDécalage = "0080000000"
+      	CAS "YAKT"
+      		duDuréeDécalage = "0090000000"
+      	CAS "YEKT"
+      		duDuréeDécalage = "0050000000"
+      	CAS "Z"
+      		duDuréeDécalage = "0000000000"
+      	AUTRE CAS
+      		duDuréeDécalage = "0000000000"
+      FIN
+      
+      
+      
+      RENVOYER duDuréeDécalage
+      
+      
+     type : 458752
+   -
+     name : RécupèreInfoFluxRSS
+     internal_properties : CAAAAAgAAACerzGoP8R8MaKgRUx7QSfgcJsGhyJ5ncAN3RQAfEnoPUqhUZurNfWgPWxtPfQ4xk8oCSVCqupabdiO0zfSlbA7FpzwXVMhzFs0v4V67qXe4zDNiMMshxBRQyvYv47lhk0YFWNCTWLzKk/SuiFF
+     procedure_id : 1614919299802646239
+     type_code : 15
+     code : |1-
+      PROCEDURE RécupèreInfoFluxRSS(LOCAL sAdresseFluxRSS est une chaine, LOCAl nCodeErreur est un entier = -1)
+      
+       // Variables
+      bufResultatHTTP est un buffer
+      sEntete       	est une chaine
+      bAjoute      	est un booléen = Vrai
+      stFluxRSS 		est un structFluxRSS
+      
+      // Réinitialisation
+      stFluxRSS.bufImage = ""
+      stFluxRSS.sDescription = ""
+      stFluxRSS.sLien = ""
+      stFluxRSS.sTitre = ""
+      TableauSupprimeTout(stFluxRSS.tabBillet)
+      
+      // Récupère le résultat HTTP
+      HTTPRequête(sAdresseFluxRSS)
+      SI ErreurDétectée() = Vrai ALORS
+      	nCodeErreur = ERR_INTERNET
+      	RENVOYER stFluxRSS
+      FIN
+      
+      bufResultatHTTP = HTTPDonneRésultat(httpRésultat)
+      
+      
+      // Résultat en UTF8 ?
+      SI ChaîneOccurrence(bufResultatHTTP, "ISO-8859-1", SansCasse) = 0 ALORS
+      	bufResultatHTTP = UTF8VersChaîne(bufResultatHTTP)
+      SINON
+      	bufResultatHTTP = AnsiVersUnicode(bufResultatHTTP)
+      FIN
+      
+      
+      sEntete       = HTTPDonneRésultat(httpEntête)
+      sResultatHTTP est une chaine = bufResultatHTTP
+      sResultatHTTP = _TraiterRedirection(sAdresseFluxRSS,sResultatHTTP,sEntete)
+      stFluxRSS.sResultatHTTP = sResultatHTTP
+      
+      // Vérifie la validité du flux RSS
+      SI ChaîneOccurrence(bufResultatHTTP, "</rss>", SansCasse) = 0 OU ChaîneOccurrence(bufResultatHTTP, "<channel", SansCasse) = 0 ALORS
+      	nCodeErreur = ERR_FLUX_INCORRECT
+      	RENVOYER stFluxRSS
+      FIN
+      
+      bModif est un booleen = faux
+      SI FluxRSS.Titre = "" ALORS
+      	// Titre du flux RSS
+      	stFluxRSS.sTitre       	= _extraitBalise(sResultatHTTP, BALISE_TITRE_OUVRE, BALISE_TITRE_FERME, 1)
+      	FluxRSS.Titre        	= stFluxRSS.sTitre
+      	bModif = Vrai 
+      FIN
+      
+      SI 	FluxRSS.Description     = "" ALORS
+      	// Description
+      	stFluxRSS.sDescription = _extraitBalise(sResultatHTTP, BALISE_DESCRIPTION_OUVRE, BALISE_DESCRIPTION_FERME, 1)
+      	FluxRSS.Description  = stFluxRSS.sDescription	
+      	bModif = Vrai 
+      FIN
+      
+      SI FluxRSS.Image = "" ALORS
+      	// Image du flux RSS
+      	stFluxRSS.bufImage    = _extraitImageFlux(sResultatHTTP)
+      	FluxRSS.Image         = stFluxRSS.bufImage
+      	bModif = Vrai 
+      FIN
+      
+      SI bModif = Vrai ALORS
+      	HModifie(FluxRSS)
+      FIN
+      
+      renvoyer stFluxRSS
+     type : 458752
+   -
+     name : fluxMarquerBilletsEnLus
+     procedure_id : 1615033296926067413
+     type_code : 15
+     code : |1-
+      PROCEDURE fluxMarquerBilletsEnLus(LOCAL nIdFlux est  un entier)
+      
+      
+      Sablier(Vrai)
+      
+      POUR TOUT Billet AVEC IDFluxRSS = nIdFlux
+      	Billet.Lu = Vrai
+      	HModifie(Billet)
+      FIN
+      
+      
+      FIN:
+      Sablier(Faux)
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+resources :
+ string_res :
+  identifier : 0x1b58609e001bb3ce
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+  strings :
+   -
+     text :
+      fr-FR : "Erreur interne, contacter le fournisseur de l'application"
+     index : 0
+   -
+     text :
+      fr-FR : Ce flux RSS est déjà lu par l'application
+     index : 3
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

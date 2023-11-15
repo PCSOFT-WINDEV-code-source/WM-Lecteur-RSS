@@ -1,0 +1,592 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : FEN_Principale
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : FEN_Principale
+ identifier : 0x2b58308c0394f27f
+ internal_properties : CAAAAAgAAAAXMg1c80xZMX3KcpMfDi165d1YDvm3z0gbX4fm82M9ZUiPTIcNnVNaaPhquf71mqF80CCmeUwQ2q9QKKrvVB0tDOrDQ+f6dwc///ybMvfP2AlIQyR1Qex4aP5btZInYst8XEcZKpWQmjm/UEMzvnX8nBmfLsLcAJ92cfHXrkOsMqtpcUgbQz6hWAnWgIjrCyl96Rx6EJ3aWZCm+FAPDUeKo/96D4T3JwqAmRIJh19rV39Jj8i+sRAejCQUZckmtbWd5/mHEgJy+OFfsprCwVGc8iUryeDYIig6J7PKGwbu62sm3/Dcs2bXSRmBe6WZRmxj5EYAX74AOUeTsLh/bEXohiu8BY1J/iMjWdxT7tqaM6qSvJHhqUkXCoH2Dqh+Jg2Q0g4qSKTCJ5gaMwKTPqMXQaz9ffHxP+t1ht+0f/EAC8ZwTZVEIRlfeZZBEnK3boB85DyDitbJHkV87g2aoeZOyqLE+U8hoUQpkX80HWE7rLeF4ZbiHAZ3ecbeI5wS8aiDeeXfQw6Kg7x1d+E/xIKC3Ghi3Bfkvr+65UfptxyHdRF0+K06it4bfiMMJmx89sUP5bLhlFoM+DoQZgCtgG83gNLEbLWRz2GIKjHvOO0Q4RnbStoHiLREnUOcn2DdXwOgU2Cz/vIh1yqhIl31Cx47JnfT+iiikZCTLiSv/prJzdjWnpWZ7K7nYCZUbzT/ogz+SAV0dAsYMQN0zyVmn5k5lnuQ0QbdFyvQDDDzPcuxz13hjbqDCGvYVLtNh2Vb4tpV333qlJnPyoUu6wTj1zS68/0t4KTQUi3MyIZX6IT9j6ra/F8ZQmLln0/UTaiOobSHzUlv42D1SRYhKN9FxAHc/MWvPqqeNOYdGBQ=
+ properties :
+  width : 360
+  height : 296
+  heightMin : 369
+ controls :
+  -
+    name : ZR_FluxRSS
+    identifier : 0x2b59b23d09cac98b
+    internal_properties : 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
+    properties :
+     width : 360
+     height : 250
+    controls :
+     -
+       name : LIB_NOM
+       identifier : 0x2b59b25a0a103a57
+       internal_properties : CAAAAAgAAABLaAUvIMVzT+XQh2IeDsWrt1eYUDGKSKdNy1SGluJYzTeqcpu9jPpGpvqH0bsOkGfpX3clEQJSTnJRJljZlemofh/Bi+HOcIvsVkX3VtUuiALQs2/5e3nVn6Mj1Vq0sy9BwGT+QZiMszf4Fb6a+IluIIq6Z65Xwg6gwaOxYi9qhPhZT6joL4N9WcydYYEO5QyxorZxdidghpaWIcwDVyol7FWjDcY9dAfL4TLgyRK2CdDtMGNoz9DSqdimI1UrQ+lmusiNYlSOEzyHsA1n3DuHxtvarkMP+/izd3u+RgoldwyXpwyQSRML8dapg3UKrRkH12hW3rLffJ2TReW1+cLw+GUO+wIxdr4lyT/Scl3lF5HHa5FEVg8ZhuD5d6X/TEV8bshfMmjTT20vo0mXvmtAdxfaRmdVwApm7L9IODTS9x//n1rPfYOivD1ncAJWPEnDKC/fOnCSsd8q0PI42pV1WKoWZv4tIBEGKqpWXnofBoTVXoU0Vo281lqq41c+SpcOdZ09eXAGJnX47k4b8TJ77Lw29EuhK0YQgSqJ2Q1CxQ==
+       properties :
+        x : 47
+        y : 3
+        width : 284
+        height : 25
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : LIB_DERNIER_BILLET
+       identifier : 0x2b83b6c308d4fd6c
+       internal_properties : CAAAAAgAAABDj3zXJ2YMwLYJPxNm5RUPrfagsxbfPmpQY0UCsnyKKA7woPKEeivkPdMZPIeG1SvKS7kJdPBgvReGcf7LQuJsqKEYAW80hhj//GoUo7rDG4KaOHNKut7N7bN5ENVhjARHa7xHHtum2X6NC9JueDdoYB3VZS9HCkfsyStFl+nv+rFZ+030yD9Pg/+QrWOs86HEij9sLU2gBzbrGfUCA6hhk/GDIurVNXDFn4IP0yDOyG6Upf2RmO4+fWzl9b7EUwQOhb5PUVxxU3Mw68FDHKXwXlMFU6k66e1JlS0PFFiOVpWCdRco8aSHVGT3A+1/faW3kTdumxxBGQtKnKKStBwCl6JXKkNK1kPdCyUUdR3fysXPZFn45wrArTCisB6vpzKajOje5lA2zXTc/80iAXA18ZAQGzFTekvcRVoFckeaTVEmfLQZseHsOSEkMZRAUCW2oj0qocIhavUOwI+UMTUlB9G4dqXaa2+2edwvKlXGHbSRkpLZstSvgtCc822pzMR6U4YIk087JH057rHqM5/ao5uR+1cHUA==
+       properties :
+        x : 47
+        y : 28
+        width : 284
+        height : 18
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : IMG_RSS
+       identifier : 0x2b83b6430870071c
+       internal_properties : CAAAAAgAAAB87sMMABXI8OBArgH49pl2Q2aaPG7fug+B4wJoeYfphocUrXn491vfxb8FS7dXeknlg3gJ9MIJhTz5ZF1D3JrdK3ygfgnwAF5y++Psw8Q0bP4O8fp87zxVB2zl8JzY8TtKS7H9PBuoCK8M5J5iRpZ+FdztkhthVY6Q4gEtg8+NTR9EOuEcHsAjnL6BO802ioXmusigk2ep7JlzXysLqMzv5/nFs4hDZ+9D/97pHmxrTCBeED+pdPkMv8WnHfPOx9+ApRgAf7TjlY6u8kPvhaEZcqd4oieqmfgjpfslFfGKUeV2OTeA8FmeaFcPJDEIonQqVOHwtbQlfwKnmiihe/uI/teV8RYb0NVsVBsSARnE3NyGvbln6drQhG/sCXvF+1IFq8t5Pu6qzL6+fukpJeZOKOMpLSQHTWLD1iyuETqTD/nvedqhdCxtAW9cAtJyPWptyTuc0Dfn6ZqlsCcIp5yAa4JanabuyfNer5iMvUQN9zNJnSAU7I9wSYWsNBN6T6S6EKFDJI4EIBFQMj5j1iF9HXgeEJY71yTMw7y73cxXrbG8WV6llw1urW7LcQHm/NAOEzXO9zwE0CtYKGMTiImfcgOz1sY3U5y/I1vQwQSskgzAZh5rqXqyXKlrd94/16dKKw2fvIOQu14ve6QImUOm4cszIIv0v+6AnGk8NzaNgyu4XkxUhzKE4N1bRcm4pcp5rt5Iozeq8dU3yR+Ns92sJzSLpza8ARCD4kRUB9CsvTwVgjx4dHIf6ZfsVMl9JMTvIUdeFDxgEXtt9Q==
+       properties :
+        x : 9
+        y : 6
+        width : 30
+        height : 30
+       type : 8
+       code_elements :
+        type_code : 8
+        p_codes : []
+     -
+       name : LIB_ID
+       identifier : 0x2c7fac54016968fb
+       internal_properties : CAAAAAgAAABXsU4iDzqGpySWr6UDctQGTYl2A82CIp3exure00Fu4AT+OWGd4O9m7fOTvpJGEswRvJVVloYlMs+B4eH9jNUN1hD5xoJyMzD9sSadGmXvpo9Un+RGG/W+W0FQdcfJ3b7aASA6JijfftE0aJKCnecJbGMCk7L0hF+/XVtT7umWCXZnd/5T4r+Y7M54thUqnbnAFY3AfMYET0K6VtzVSmkIfonuEO/rnS/UwOJwRTwcfJVJauNBMDWb/zSDYpUzVzyy8M87d0svn8EeFGL0AXeRLzTVvQnZCnoRakegkpdiDfkF76LQdcVwoxSBgOOLxMJWqWGCJnqOdqtOswWqWPzxqk4IQgspP6hJUwpEA+MLzsIL/8/oN3vaSx7qtdewQ5L+/K30t9TqilVMs0mmiTKBbZYUlmKljhQcQtZq7XMXG30o9xRg4y0A1CAiBog0/g5ipg==
+       properties :
+        x : 333
+        y : 2
+        width : 22
+        height : 28
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : LIB_X_non_lus
+       identifier : 0x257e9aac02144fd6
+       internal_properties : CAAAAAgAAAAqXh1QaB+kblO487Xh4HKqOms2P3O38MnA3VxuH+l71zwbhabQl3akn4XfCWTKarCXw+DoQuEpofN5H2p1l05PsiEsXQ0kJbLC1gmqxrtk4ll3TNq2yAzHUqy5qoMA1fT6uUZe3X6zk0se6XDMrsp+S5vr3ILQgNoyJSVPZMHiGoZHypPtEgSs41TNMX0NB5vWOe1Agez1usXdL4YqNLeZ+ra2WcaKTOHJqoL91KodV1YyKX4epvVX1M5lQvb+3//SSTGzVcaNWUksTAqY71mWmJzSi55puyysr50mZeuNZgDNHgHxh5X9tKHgZXOsqe0sEcNrBKNeIroIIE/tTF3XAYLsbybrqVtXqTpPLkJCCgAAFXojm10OLz9MdN/FVh6hUEcTrCzmKxi+HE+r0JfUMpJE45o7oWTtCBr7f3wD4ut47O7QeCJ4ZRcq7HFpXXaI5SYw56hGTenoTY3eNykugT9NRZDNMoigKro3ImDzMsAnJw==
+       properties :
+        x : 47
+        y : 46
+        width : 284
+        height : 20
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+    columns :
+     -
+       name : ATT_IDFLUXRSS
+       identifier : 0x2c7cba7301c93cec
+       internal_properties : CAAAAAgAAAAzSeCJOf8wNOc9ov/b2/P0IyFWIjr7ipNJNGuyzd5BG4yG79gDIVxWPEdTlClRTS+emTLyRJxsEfVqIomkswZW1qCxwUuz6l/611zk1KRIBbz2N5+Vl8K5U4aROx+srfo8ttBvooavSDiyDOjdq2DPcvmRp2Ik1FqiobzH5gK8vw==
+       type : 3
+       content :
+        identifier : 0x2543da5406d65cce
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_NOM
+       identifier : 0x2c7fbdeb05861e46
+       internal_properties : CAAAAAgAAAAdY4LrW56Vq9HpqujmFlG3vscYjuuHtPV1O6jLEuM++iS2b/y96eVLCh0dvnT1elt7TKomJF5Y4alFHsNvDqo13bvIMBe4E/whWlP1kV2UdnP9o/KEJNMDXXAgrA7V3uMW2aZ2vPYdaGjq1r97oiTfSgQAYL/SUThGBZ4lhCSSkQ==
+       type : 3
+       content :
+        identifier : 0x2543da5406d85cce
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_DERNIER_BILLET
+       identifier : 0x2b83f49101e567f6
+       internal_properties : CAAAAAgAAAAKZBRsqXPWsC1mxWQh3YrREDYBwww7+lONoaaQ11dsNC4iPMrO4bHCfB4Q5yGfmqEyvkxBzGgRAHXsY/4yJseoeWno+AsCIaD9aPcd7ZiiN2Svbayi0vHrRVEkcMBcRuNP34o6uyDAUecjf5k9rMixHX5PGHVgyPfXJ7k1/k53BHH7wV629nE=
+       type : 3
+       content :
+        identifier : 0x2543da5406da5cce
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_NONLUS
+       identifier : 0x257e9acb0235cabf
+       internal_properties : CAAAAAgAAADE73Y09RE4HZWvBW/XvJ+S8bHhn6ql6nMPpL4KDNXDf1RSNc+K64PF3mFtONhZ6LOIKch1cwQM358LRRy/4U1fa7KZ8kHazoaaN3OqVY6fyt9iUSQsJ1GuBdvTQi23ums2Q1swIUyXqNm+OVY6LtgRcY18v0xwXMci7iUeFmpx+dvFRQ==
+       type : 3
+       content :
+        identifier : 0x2543da5406dc5cce
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_IMAGE
+       identifier : 0x2b83d50509472cd7
+       internal_properties : CAAAAAgAAABnpktW1w7sQ5WhN2Z3pbI8VgiTCx/+MVWz2nM1CbQBVJy19eQbNuXc0vNzF+/clKoBVBpZql6jUiH5NjmpzPKsbil+z7vxkRU5HlhLm5w4/H87goRxM5L6tfoTeuR/+4aJrv6X1ReNQQco1AVtN/qcxND5ph8YbXGI6TRvIUIH4ZDHVhE=
+       type : 3
+       content :
+        identifier : 0x2543da5406de5cce
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_Chargé
+       identifier : 0x25e4780208397a38
+       internal_properties : CAAAAAgAAADqGKQ5+o5jRrn/acaQvUjXC6Zi2qeyy+pImPY+xXM0r1osYxpoO1qoiJlMyllJipw8eHCnfylAYm9+AGQ3L8XPaHgTT8mwPSPEbLMRhwt3vNz02X0ShLYQ4fDUlJrlEQTjfKrhfjzdYA==
+       type : 3
+       content :
+        identifier : 0x2543da5406e05cce
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+    type : 30
+    code_elements :
+     type_code : 42
+     p_codes :
+      -
+        code : |1-
+         
+        type : 14
+      -
+        type : 35
+        enabled : false
+      -
+        code : |1-
+         
+        type : 21
+      -
+        type : 22
+        enabled : false
+      -
+        type : 24
+        enabled : false
+      -
+        type : 23
+        enabled : false
+      -
+        type : 25
+        enabled : false
+      -
+        code : |1+
+         si att_chargé = vrai ALORS
+         	gnIDFlux = ZR_FluxRSS.ATT_IDFLUXRSS
+         	OuvreFenêtreMobile(FEN_BilletListe, gnIDFlux)	
+         FIN
+        type : 33
+      -
+        code : |1+
+         
+         // Rafraîchissement des données
+         RafraîchitDonnées()
+        type : 230
+      -
+        type : 241
+        enabled : false
+      -
+        code : |1+
+         
+         //Arrête la récupération des billets d'un flux si elle est en cours
+         FinAutomatismeProcédure(RécupèreBilletsFluxRSS)
+         
+         Sablier(Vrai)
+         
+         // Supprime les billets
+         HLitRechercheDernier(Billet,IDFluxRSS,ZR_FluxRSS.ATT_IDFLUXRSS)
+         TANTQUE HTrouve(Billet)
+         	
+         	BilletSupprime(billet.IDBillet)
+         	
+         	HLitPrécédent(Billet)
+         FIN
+         
+         // Supprime le flux
+         HLitRecherchePremier(FluxRSS,IDFluxRSS,ZR_FluxRSS.ATT_IDFLUXRSS)
+         HSupprime(FluxRSS)
+         
+         Sablier(Faux)
+        type : 222
+      -
+        code : |1-
+         
+        type : 65659
+  -
+    name : IMG_DéveloppéAvec
+    identifier : 0x257ece830887d05e
+    internal_properties : CAAAAAgAAACQOVMjh1QadgIotVeNSpi31IiEJedDrVljz4FRVdTDdr/ZxdkOWHNG5xE/49Liexn40qNuK44XlYcVMO/VRoVGHqcDSFkwtWhoXz/Y0fbKxJul26/ra2yvXY6UTVKKhEoMnYRIbONnZLXjdyfoYjbaGdn3KBPrrDP283j6rLemU3bOJ7KkaLG7idhWuMM63fTc55hLHCeD80wy9oCEFQKdd0Bck+hPXWe2XWWt5Wmsa+IMpODFWgt1GwAt8pil77iUl+xnglDkpXLflzBDcZL/3MQbuRcCl/09lV4fc/avh7zPpfLlrPcmSwJdckaRZSxKMlNxaT0uBMC+/pcDp1QjJSIyFWRSjh5us41ZljZ58mFuycU6RGknLk7GcureZF+q5gilX5p2r8CSajYBTEYUgVq5iHCdepyUJZmvnfsNG6DAvIQ1qLUx2UAv0DprbUtdI2d9R5iprRWt8wL5YPLuyuvjs/s+dN0d4gOM0wqTeKEIknX/gOjNFF6dEZs0WjAWDU3aXU/+tdNPTAHkwVyXgsioImPPtXOdwgFKZQYCmnGM8BTz0vp/BuEorx56nrO4VU9/g4opk99zkn5YymoIjVhuI2b+A3482V/T2GWUzrFMqPkfAOHEHL1ywN8nUK6G36WExKD9Nrq7Ge3v1sspNcSYb1w4ru4sexjjoatjKGM+EtYwwlTuewEA86HNKIB6g/nOu6Y5oQXRPMkiYLLmaslU6GlZ2YsXfxbeFy57edkdRYqyXPAOiT1KkqhQgWGP6fF8/QSxwic1wHX+emNLzC02eyMZ7cOCnXFQ1ck/fZCK4yAVDv1ej2TRyYKy9ghbBtzub3Q=
+    properties :
+     x : 252
+     y : 261
+     width : 100
+     height : 29
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes :
+      -
+        code : |1+
+         NavigateurLanceAppli("http://www.pcsoft.fr/windevmobile/")
+        type : 18
+  -
+    name : IMG_RSSDEFAUT
+    identifier : 0x258808eb0ddcdd49
+    internal_properties : CAAAAAgAAACyksqv05JzRIqx3re1tcQ5Tf68c3vAcF8boeIKtDUW4Joq9DVQw+OXgO586RrOSF8UYuwdJp7TzlFkrTG+7V1KdJWaplZ4G1qCBbD8kG2qTeEpxjKUXaIfGbewl38eMICX7fpAUBncEVvbZPpu02iYW5hxpb5RXJy36SKiTcLlArJo469Ua9r+ySmDz+tY8CBspNB+TfQyso7a7RYfUGGV7UVoPVi6JfLRikblQ75XUiMAoHwCnwyowE4mPHHCMDazBCJu7DqQA9AvP7vkb9OaEmIiUsSzvWc8ngJICi387JvarqBJAQk0ZpL8QVEsx/M6JY2qfmlcuqfPWNY6z1dthrFj8eNygXuRD7eQHfbjwY786ONFZ/KtiSsvDtrLnDrdZTFLNkKFfTiJYlh6QMGvgZrlcc8glxpj5VDFEqPZXTVzQbDstdrfKoNNqkf9ewmxp7W8IKgoYdH5tq1lZzss65Xd5j2NTODLW5YCjcVVszfzl4K7FZOXCbruV1NOOS9P+H8Lb4/LR/lrYDV91KWH8p9iRuTUpTPIZNrGVuI6OvOwvNcnwbLW8+MMM3gw+wlauFL6DyWPSRjmdMr2sqQcHfpq4tZeQaHqsEWEiIvrNn5rhJiuf52HqHje4E7TJa7plmkcJ2YLovANA2EBwhP3qmdKFGjUx/FBHFZkv9N6visqVgJ+zXTYSPHPIrZ0xYmhPJjqc4OpjT6RwyWSxslhbd1uj5tSRsma/rCMAZVSQt14mXDTcWaDzze7AD6ds4KLkzzagZwXlEeAbB9wU8bQ3Gal+w/Wj2D9syYnz0I/iv2a7eZr7zKVyg1udQ==
+    properties :
+     x : 9
+     y : -116
+     width : 16
+     height : 16
+    type : 8
+    code_elements :
+     type_code : 8
+     p_codes : []
+  -
+    name : JAUGE_NativeCirculaire
+    identifier : 0x2665c9a94a94c2a6
+    internal_properties : CAAAAAgAAAC03XGMJ1by4JL0bpXXbP+1Hpu7oZpncL45drHWkHt+iLB6Hb1V9GzqDICoq4WxN2fHNI8PU0inG2373CQ+BQTp/hJZL544LWWNuJI1mXmzea38d/vEOdz7kmH7nYsjs57NWnWNjWCafbDjgXX/KCy8eNCjp/jDMneL3y7NgwBZUOGbM6D1esKPaQEazKI1/lYf2omIUQst0qr+fuhNIgStbj15vvvtWy1fThKwYYzzWaS5tyTXMSAnE91rlJssoScuEtrVnAVrnIDf7ySquCoUVuC8MpyYEmiRbokjkjhpBjiKpzZbZAWNVDF7Jgz0M6dn12H0hS22eOYNErBb9z4JmRmrN0SNifGhVKhMEuzM7oEOBO9mg+lJYloz0/ivo43HjPezy+dTwMGJdwb/cfR0HovpqagbAOyXnHKJBL7cOAtxnUxQtRHLjLez
+    properties :
+     x : 156
+     y : 124
+     width : 48
+     height : 48
+    type : 113
+    code_elements :
+     type_code : 136
+     p_codes : []
+ actionbar :
+  name : ACTB_ActionBar
+  identifier : 0x257eccc0075ef0e9
+  internal_properties : CAAAAAgAAAD56mQeOIR5TgHflXqK4Kvccydcfhu10dop+WJgTzqjmKTAuua8b/fKGg7Qu4GfZf0QdmauJk1Sv+JdhFaovWjdWeBAMuwxZ0u7klwcQ15TJ2sItfa2JcEkzq7PjBezpSHUjtzqGTdsKHqlDsH1GpO7m7LKeD124baSwsz60FVwaQRAH95thyLOq9Y4B9igzDD56Y+HDhImaLFqqbjy7UGhGOyU4vAliJKebKuBfEjxm1baVsHcWGmnh5QLaIuHfXiG9Yyub4l08urFqqueTjPhxGgnLbjyYI/LshgxkDwXreToy2vSJmmrHEoeaswjLA+laXXTYkL+k2Ynxk5rmfX/PIMRVZdKxYv8tuDI7YaPuu3pOR1b5XnNx63iQ4ZvD2mHVFG0W/L+58PViYxcjusuVc0tHhSMzlTPLTpPfsSahqhLpiqd0lWzDI6XqfmPOtR1
+  controls : []
+  code_elements :
+   type_code : 125
+   p_codes :
+    -
+      code : |1-
+       
+       FI_SlidingMenu..Plan = 1
+      type : 18
+    -
+      type : 229
+      enabled : false
+    -
+      type : 239
+      enabled : false
+    -
+      type : 240
+      enabled : false
+ menu :
+  name : _Menu
+  identifier : 0x2b58308c0396f28f
+  internal_properties : CAAAAAgAAAByVTsSr3/syDi1St8xf8fgHxdhV816G1q5zyODGkOm1npuSkYo5g/jXWoWFFK2H3oUBZtHLsT5rfRCnVFNNS0taWG501M84VhyiY2gqfWqbb5TaLNBc7/5X5PbRqVlZ5a3p7SznWjoHPbzt8FGrVw2pkxQ2AMTSCoEquPAoSRRZmCgf0llwPSIdkz+fkQsa3yCb/aARC1IuAmTNbEAkdknQHeBdhsRIWlMefD05RVbqvlMGzysSB4KUPZWTHHaQPB4ObHU/5KQ/VjN8jyQaoRgKuGxrJ5V23KTuMr/Zw==
+  options :
+   -
+     name : OPT_Favoris
+     identifier : 0x25e069750a9e8859
+     internal_properties : CAAAAAgAAAAxk7/70+V1cMN7lFskZWV4YL6K+2Xmsi5ta5kpZVEXvRcQrXAkh1YuJjAqTdpdxpoqvWphXpD1sCTkEB+R2DbKBIrOXZfqwFmFXgLbtO9LOSdicgxdMeuWMSVJcPWRMadx00J09zGriZ7nsPhItU2aagCcpQIkYjmkE6hAg4QxZlugWPeWS9Zr5/h5BPbZJ3anzYi4fNTZPslUzTvKyFuUi4bGGNcQ7zy9LkMN2W8oOZdrU0jPzehDvoYNxP8dLeXxTkILWIzG+XkWFL3AYqQKX9wu8t6hRbtNvcXPIAHX+x7dPcA5rRdekXl3xoWixV1tdeYzTher2UD0Lv48ugpXKTkeC77IfY4ME7FRbTYAeTqOuL8=
+     code_elements :
+      type_code : 26
+      p_codes :
+       -
+         code : |1+
+          // Paramètres de la requête 'REQ_BilletListeFavoris'
+          REQ_BilletListeFavori.pFavoris = Vrai
+          HExécuteRequête(REQ_BilletListeFavori)
+          HLitPremier(REQ_BilletListeFavori)
+          
+          SI HEnDehors(REQ_BilletListeFavori) ALORS
+          	info("Ajoutez des billets à vos favoris afin d'y accéder plus rapidement depuis cette option") 
+          SINON
+          	OuvreFenêtreMobile(FEN_FavorisListe)
+          FIN
+         type : 32
+  code_elements :
+   type_code : 26
+   p_codes : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAABaTc58N/vBqwlwoHJ5/x8SHkaJqAy2Wcny8nh41SkL06+yd2NIGtdhtxGEx/jsdvPbeZMKh4UyokrltfpNoZttyCzjD4YTDSPD5w+jdNs3ODxlPXTOXeRJYhMb
+ code_elements :
+  internal_properties : CAAAAAgAAACvhiIr8gSQ5loUp83uTso9CuLc4dExenO6nYq0wt6wNhhy8DIKk+8xrI7GMink5ce8SLehbaZBjJVyvy60Arg=
+  type_code : 1
+  p_codes :
+   -
+     code : |1-
+      gnIDFlux est un entier
+      
+      CB_RafraîchitDonnées()
+   -
+     internal_properties : CAAAAAgAAAANK99aT578pqrY5vHKk6We4QlF1n4phI60i5kiJ2ajIXqY8ANw+K+Ev0qF5XyF7/X5nkR47wx/A9HQAdXUtV09qS9IbkPPF7nTWSaUTtcQidvXNTL45w==
+     code : |1+
+      // Traitement automatique des exceptions :   exécuter le bloc de code CAS EXCEPTION:
+      //
+      
+      SI HNbEnr(FluxRSS) > 0 ALORS
+      	
+      	//Rafraîchissement des données
+      	RafraîchitDonnées()
+      	
+      	
+      SINON
+      	
+      	JAUGE_NativeCirculaire..Visible = faux
+      	
+      	FenCoulissanteVisible(fcGauche, Vrai)
+      	
+      FIN
+      
+      
+     type : 34
+   -
+     code : |1+
+      //Rafraîchissement des données
+      selon MaFenêtreFille..nom 
+      	
+      		
+      	cas "FEN_BilletListe"
+      		nIndice est un entier = ZoneRépétéeCherche(ATT_IDFLUXRSS, gnIDFlux)
+      		
+      		//L'utilisateur a sûrement lu des billets, on actualise le nombre de billets non lus pour ce flux
+      		nNbreNonLus est un entier = getNbBilletNonLus(gnIDFlux)
+      		SI nNbreNonLus > 1 ALORS
+      			ATT_NONLUS[nIndice] = ChaîneConstruit("%1 billets non lus", nNbreNonLus)	
+      		SINON
+      			ATT_NONLUS[nIndice] = ChaîneConstruit("%1 billet non lu", nNbreNonLus)
+      		FIN
+      		
+      		
+      		
+      FIN
+     type : 177
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1+
+      
+      
+     type : 2
+   -
+     code : |1+
+      
+      
+     type : 11
+   -
+     code : |1+
+      
+      
+     type : 12
+   -
+     code : |1+
+      
+      
+     type : 17
+   -
+     code : |1+
+      
+      
+     type : 13
+  procedures :
+   -
+     name : CB_RafraîchitDonnées
+     procedure_id : 1970803352183279979
+     type_code : 14
+     code : |1+
+      // Résumé : Affichage des flux dans la ZR 
+      PROCEDURE CB_RafraîchitDonnées()
+      
+      ZoneRépétéeSupprimeTout(ZR_FluxRSS)
+      
+      sDernierBillet est une chaine
+      sNonLus est une chaine 
+      
+      POUR TOUT fluxrss 
+      	
+      	//Récupère le dernier billet
+      	
+      	sDernierBillet  = ""
+      	sNonLus = ""
+      	
+      	REQ_BilletDernier.pIDFluxRSS = FluxRSS.IDFluxRSS
+      	HExécuteRequête(REQ_BilletDernier)
+      	HLitPremier(REQ_BilletDernier)
+      	
+      	SI PAS HEnDehors(REQ_BilletDernier) ALORS
+      		sDernierBillet = ChaîneConstruit("Dernier billet le %1 à %2", DateVersChaîne(REQ_BilletDernier.DatePublication..PartieDate, "JJ/MM/AAAA"), HeureVersChaîne(REQ_BilletDernier.DatePublication..PartieHeure, "HH:MM"))
+      		
+      		nNbreNonLus est un entier = getNbBilletNonLus(FluxRSS.IDFluxRSS)
+      		SI nNbreNonLus > 1 ALORS
+      			sNonLus = ChaîneConstruit("%1 billets non lus", nNbreNonLus)	
+      		SINON
+      			sNonLus = ChaîneConstruit("%1 billet non lu", nNbreNonLus)
+      		FIN
+      		
+      	SINON
+      		ZR_FluxRSS.ATT_DERNIER_BILLET = "Aucun billet"	
+      		ZR_FluxRSS.ATT_NONLUS = ""	
+      	FIN
+      	
+      	ImageFlux est une image = FluxRSS.Image 
+      	si ImageFlux..Valide = vrai alors
+      		ZoneRépétéeAjouteLigne(ZR_FluxRSS, FluxRSS.IDFluxRSS, FluxRSS.titre, sDernierBillet, sNonLus, FluxRSS.Image, vrai)
+      	sinon
+      		ZoneRépétéeAjouteLigne(ZR_FluxRSS, FluxRSS.IDFluxRSS, FluxRSS.titre, sDernierBillet, sNonLus, IMG_RSSDEFAUT, vrai)
+      	fin
+      	
+      FIN
+      
+      
+      // Arrêt du sablier
+      ZoneRépétéeRafraîchissementVisible(ZR_FluxRSS,Faux)
+      
+      
+     type : 458752
+   -
+     name : RafraîchitDonnées
+     internal_properties : CAAAAAgAAADEB8HeItXL+6qqhuEuMJEumOPjLyndyWMql/+SrT566F5JC6CkU17ILDIxreeHoPxTFWpdj72uP4OSyHDmg6MUv+t5fKYtcPkSQSyM9tofUHU+X3DN4aLVAP9tjYam1K1XKmg1Gc+DMJkhNGTtmt9+g0VkQr2Zh3r8k6jf1PN6jLamtbI=
+     procedure_id : 1559330843683980224
+     type_code : 14
+     code : |1-
+      // Résumé : Demande la récupération sur Internet des billets des flux RSS suivis
+      // Procédure automatique :
+      // La procédure est exécutée manuellement, lors d'un appel dans le code, avec un différé de 1 seconde
+      // 
+      
+      PROCEDURE RafraîchitDonnées()
+      
+      
+      // Vérification d'une connexion internet
+      SI PAS InternetConnecté() ALORS
+      	// Remonte l'erreur
+      	CB_RafraichîtDonnées_Erreur(ERR_INTERNET,ErreurInfo(errMessage),DateSys()+HeureSys())
+      	RETOUR
+      FIN
+      
+      pour TOUT FluxRSS
+      	
+      	
+      	nCodeErreur est un entier = -1
+      	
+      	stFluxRSS est un structFluxRSS = RécupèreInfoFluxRSS(FluxRSS.Adresse, nCodeErreur)
+      	
+      	si nCodeErreur <> -1 alors
+      		//C'est qu'il y a eu une erreur
+      		// Remonte l'erreur
+      		CB_RafraichîtDonnées_Erreur(nCodeErreur,ErreurInfo(errMessage),DateSys()+HeureSys())
+      		retour
+      	fin
+      	
+      	//Demande de récupération des billets des flux sur Internet 
+      	RécupèreBilletsFluxRSS(stFluxRSS, FluxRSS.IDFluxRSS, CB("FEN_Principale.CB_RafraîchitDonnées","FEN_Principale.CB_RafraîchitDonnées_Erreur",DateSys()+HeureSys()))	
+      	
+      fin
+      
+      
+      
+      JAUGE_NativeCirculaire..Visible = Faux
+      ZoneRépétéeRafraîchissementVisible(ZR_FluxRSS, faux)
+     type : 458752
+   -
+     name : CB_RafraichîtDonnées_Erreur
+     internal_properties : CAAAAAgAAADFSpiGNdPwzc55lqMc8D55WEtNUvkrhzSLPRNV4zNxos4j2R7psN9QYmZmVxWYXUxHMzXbsCFmgzgNDRJTYxP0Y7+nSyLxL1nfULiZw33US+mey3WfiV57F3TSuc4C0b/Z2/7pIEylSCnMiiWAvueJhKMRr9ktKR4hsgaPL5lKyQ==
+     procedure_id : 1559336659071643092
+     type_code : 14
+     code : |1-
+      // Résumé : Callback appelée en cas d'erreur lors du rafraîchissement des données
+      // Syntaxe :
+      //CB_RafraichîtDonnées_Erreur (<nCode> est entier, <sMessage> est chaîne, <sDataPerso> est chaîne)
+      //
+      // Paramètres :
+      //	nCode (entier) :Le code d'erreur
+      //	sMessage (chaîne UNICODE) :Le message d'erreur
+      //	sDataPerso (chaîne UNICODE) :Des données qui peuvent transiter de façon asynchrone de l'appelant à la callback (exemple un indice, une constante,...)
+      
+      PROCEDURE CB_RafraichîtDonnées_Erreur(nCode est un entier, sMessage est une chaine, sDataPerso est un chaine)
+      
+      trace("CB_RafraichîtDonnées_Erreur : " + sMessage + " - " + sDataPerso)
+      
+      // Traitement du code d'erreur
+      selon nCode
+      	cas ERR_FLUX_INCORRECT
+      		ToastAffiche("Ce flux RSS est incorrect.")
+      	cas ERR_INTERNET
+      		ToastAffiche("Aucune connexion à internet.")
+      	AUTRE CAS
+      		ToastAffiche(sMessage)
+      FIN
+      
+      // Arrêt du sablier
+      ZoneRépétéeRafraîchissementVisible(ZR_FluxRSS,Faux)
+     type : 458752
+   -
+     name : AjouteFlux
+     internal_properties : CAAAAAgAAADYm3P9W42YS5zpfIV/qVMGtsV2mEIshAynmglZBbJkMEcW3fWgN1T64hOe1C0ltvEUk39WWKKh3pry+k39Y8P4XtgMCalX7shEn7fPxDGVh1JcNgQUZduomMo2HiEgJ/T0buoH3bTG7kk1m9GHyGYuWm7GSBqO2YXfizvQppAVZu/RWQ==
+     procedure_id : 1614929088036703668
+     type_code : 14
+     code : |1+
+      // Résumé : Demande la récupération sur Internet des billets des flux RSS suivis
+      // Procédure automatique :
+      // La procédure est exécutée manuellement, lors d'un appel dans le code
+      // 
+      
+      PROCEDURE AjouteFlux(LOCAL sAdresseFlux est une chaine)
+      
+      nCodeErreur est un entier = -1
+      
+      stFluxRSS est un structFluxRSS = RécupèreInfoFluxRSS(sAdresseFlux, nCodeErreur)
+      
+      si nCodeErreur <> -1 alors
+      	//C'est qu'il y a eu une erreur
+      	// Remonte l'erreur
+      	CB_RafraichîtDonnées_Erreur(nCodeErreur,ErreurInfo(errMessage),DateSys()+HeureSys())
+      	retour
+      fin
+      
+      
+      ZoneRépétéeAjouteLigne(FEN_Principale.ZR_FluxRSS, FluxRSS.IDFluxRSS, stFluxRSS.sTitre, "En cours de chargement..", "", stFluxRSS.bufImage, Faux)
+      
+      
+      //Demande de récupération des billets des flux sur Internet 
+      RécupèreBilletsFluxRSS(stFluxRSS, FluxRSS.IDFluxRSS, CB("FEN_Principale.CB_RafraîchitDonnées","FEN_Principale.CB_RafraîchitDonnées_Erreur",DateSys()+HeureSys()))	
+      
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAADeQcze1Ixqfwn6yOfjwsQ7IKxuiqMzbTygTLeVXFH8DB0WqXgSKvkzRoO0/Z27dfrh8D+BLYmMenjdtZezotw6hJf2mE4Gv6OctA==
+  original_name : FEN_Fenêtre1
+resources :
+ string_res :
+  identifier : 0x1fd22b95039a4561
+  internal_properties : CAAAAAgAAACyXVFaObH4lOGSEHJoZf1MD49w+XTw2LScZCP/urkWFwy+HYJdyQ3umA==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

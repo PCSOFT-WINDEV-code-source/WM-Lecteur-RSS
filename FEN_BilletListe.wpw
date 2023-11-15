@@ -1,0 +1,513 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : FEN_BilletListe
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : FEN_BilletListe
+ identifier : 0x2b5839a60a347f92
+ internal_properties : CAAAAAgAAAB9liqAr4W/n8HdYNUC+BHMQd1W5KN7WcYNNfjLPQuOkKvXWSe3RMbZZ93X9UFiYV+0r1ZxEB5TIuT6KLzkhnFeYIzwTiXLHrI67vqQrhUzNQ/6j9jTEdEipxA3CZ660YZw0RFUSk9HKmA0kdOEd3Tzy2MHa2xxOsguVLL2abRQch3acA7VLky0KUQ/Q1hsMZn54uEnPOPLgplrjoGRLVFPa7zXCZIzTkrXPu4s9m/+u78etwXAp0pBg6BUP/j2bMVvuXvcslGuLDkMUPn3pwdILHIx7j0GJsuoS+AAZ3E4g9DIapTxEMG38wKXbDtUHjFSLE7Ubi0u+zyDU5r6mdP394wyWEKIs9PBLDwtF1a/3gaY16k3ZE3ZsO81+fsb7tckVTkXg5JnnrdxgUt6GDttCZICDPtXK4lHIotNXhMEts7ghuU8Q2rWDnB/GykhhylU9hBYAs22SPP4p2raWZkrAEq3Eju9NJFWLlYVCn6L7s39dw/vQXgprhJPgM4GTGGN+HQeDzZPoG2+dBt0RrDi5/WUDk8ZXSOxtwd94QaD7enTBupEUZqmxeY20ZAQ2c0VGV9wNv5vQrffIE6/VT72sHtlKbdGYQIMhvyxb9V6pZRjNZOTO+bGwMGFfGCIrT4pLayV0aOElDJHILOjqSOh4uWh4ul0yXJRQKUPymwcDPZ+lXkXiMlgxoIyv69VktzUZdRd9Uck9vA5OFjCHFlPjJmZ4FDqgLrbTJ9zMKTB7kwHgnVg7zC/k3sot9g+BPUwxsn0NuG/erIauHrDefy492R7XVbiEt1doN/YOx3DrtG7e1t9iRH2HEZuFvNOzHQ5v3wVjU8N+G7MIe4jepYil4cFsopMqg/PuY/DU/hepoTIRc85VtI4pxjXIirQKv6O560aR7DD8rWYaNBsU9vaf1w5OrQ1lhLLDYYzH+1YgDkb0Oc=
+ properties :
+  width : 360
+  height : 296
+  heightMin : 369
+ controls :
+  -
+    name : ZR_BILLETS
+    identifier : 0x2b5839a60a377f92
+    internal_properties : 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
+    properties :
+     width : 360
+     height : 297
+    controls :
+     -
+       name : LIB_CONTENU
+       identifier : 0x2b5852a70ae72851
+       internal_properties : CAAAAAgAAAD/KvRW08SUzl7SA5ihR7A0cHxw81oaYf772iIAROa6VMnfzA1Qb2wt6mvf+t8+xPNgfWCqm4y9LwltCYLe3v3zX38O2a5vMj/ExWZsdMq8D3/3sepTxQwc4U/exkdNHTrWgfCbfEeVhtlq4hk2K7jqjrl4igg9zHQgmBsOSJENXmFqVw0+1kP89a2YCx0vxRXEhTYgN6HMIbDkruh96K+Qc16pRUR1BF/b1AQCCH5xJ1+uGWnp3mWql9DyPtWkqpdMDuzx98LUlAhOvzi3XzR1PRnUG5mrJR/5r+uTjPVGG1XjBx/lMZBeubhXcJczMN8xrKREUJgJo+JD5rXTes9dd9x6B7HdZjVznnxXJEvfrWkoFaslIlpcBfARDlgvyG9KQeaYWhkSDz8EaAsLTgl9hbv2nri5uVNOKUE3lYVeU4vM/HxzLmplYWQsIG8ANXfErlZRyALclOHunTpKGp9g3Tch2Hq3KgFQvedW7xNc4l6sf77u/3mYSDbMvFxUlcaEQOmev4QuqXTddP24cpttUrEMPlXKRfZF8Hw=
+       properties :
+        x : 5
+        y : 22
+        width : 237
+        height : 80
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+     -
+       name : IMG_ILLUS
+       identifier : 0x2c7b810d04b411ae
+       internal_properties : CAAAAAgAAAAEp7G4zG2P4z36kyClw7505XO8F/yBjttyUn1l0PvpmRKX+amBRLj6k4ffoMfkVyBh3VvRL8BKl7LwB+6QY08EnLTiqJ8JahVGAWmPz7OSG5SpcCqvlLfkgAEUWeXoNRo/HR+Vigyg5I4kkTeDmHtI4aXDhDbUQ4wlmkUXIfq1hTlGMBRcqN50gBQ3LmvJm/eb5YjXaND3wcltNw4+bRfeH2y0d/Vjcs9zqDWDMzbYRnCA3nncmtGa9WLyfFZ4ybHnRPoBtUMjlCCSEYBMHf0P8yDeTFLk+P9NAse0coPdXjDuo8Pa2U/fU4vz9PqcHLsIpBAHH5QBwY40OJbbil5f2yfG1w0MCWC1EWCqCgcw2Mdhbh97/mUFPb/5NnYgsafBRw8hbCCNHVBFktUEAKTfd34gqJ2bmkIPWMhhx2I2nUnvuRn2xYIvqqeeadeydgDW5h/vMavmJbRVlfL8MqwEKYf21T/i0qPovx0Z4bho8OJLunEzieZDF0MNqwbgK2z0enlbpEJ0/5Y1fLQO014NGCEKbApR7owfu8osuxLKd/ysF6XqIA7nkghEoLDoYoVaTGWdFmnHzV7l9KXhAW7fUBhTX7rdRRSOBbQhToXDrDt55ppiGKnCsyh1JbXSAL9M9DeJaBeEy8SxviM48A6XIh3l/l9YJ8bOkUX2hiK+2R7i+x/Mg7ZaeigFrEDirh/ZOh/mOHWR36Ye7QF7nSp6E32PPtAC2PNuA/Hle2Gt6pXr+DgOntZvTQiCslQ+ycytQmC1jmhXKGmcZLl1B3E=
+       properties :
+        x : 249
+        y : 4
+        width : 104
+        height : 98
+       type : 8
+       code_elements :
+        type_code : 8
+        p_codes :
+         -
+           type : 18
+           enabled : false
+     -
+       name : LIB_Date_heure
+       identifier : 0x2579af540401577b
+       internal_properties : CAAAAAgAAACK96HuG/65VdAhEhCQMHhyslHngY/okauB/V6Q7U9vloNKIeshE1aoNj/YAIikTEU9z6DF9RIHpS1YjjQGAHtjh6eu8c2dBPZsn6QaRPscQ5mUyX3wLbQbNHc07qsxnAt7Emk3f3gWi5NmwzE3FS37a+NZt7nUYzHEIF2eMi/WT3H7CIElAkwM9R2wCpz/Tcc0/de71sTYnDjgT7sJayc98BEl5DEjJHmD8ohc84xpH0xLaa2MZrEQ/NfLcuVKW+PasBCznw17i3tM4Gswtu3cNmuN6POUIUZPVU/+ujcHWWpsvEWF16U8tsrRJGXl5NaxyHd7EoNwSghKeGm446IJiGD8HR+qR0KCWVVvJFrzeYL3Hj2tMguRd3uz/ExRHyfO+d0YAZ/fC/7GMwLjsILzPk3MxSMzS9k6LacU0KScEEOiT2+j4U+nUJlzX4fQdCtKxYClg3HFFBPIrL35aV2gEwXXrrvlgu6Y6BMceKg5tyiPgPowAknT9e6aF37nzHCXsmdQ
+       properties :
+        x : 5
+        y : 4
+        width : 237
+        height : 13
+       type : 3
+       code_elements :
+        type_code : 2
+        p_codes : []
+    columns :
+     -
+       name : ATT_ID
+       identifier : 0x2579b203049fd283
+       internal_properties : CAAAAAgAAADCcEwRosYrDvEnIc6IRXDPE056wv96I8IgQOXyuThcAphe4t5WddRcFDVq7IPb2iqOYhzbrFwtEx4tsWv+NLjCt5d8xqrScXVpwfPZnzOvFLTMIaX6nM4oyejcjJIdWcwrxGK5liTFSA==
+       type : 3
+       content :
+        identifier : 0x2543da5406455c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_TITRE
+       identifier : 0x2b5853400b88805f
+       internal_properties : CAAAAAgAAAAM6gchhC15svseNdzIu+C/nViiCF2XZBSIkNAp097zXwy0QlFHaQGi8TpbvGX6BZVOL35DTfqV5x7M5DSiQugPdON0XEO3AU4fEjLsLakcxVk577zyELlujrneDq4NkqpdtonTTGIutyyfUQRYqHr/
+       type : 3
+       content :
+        identifier : 0x2543da5406475c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_Description
+       identifier : 0x266aeb3a277fe5dd
+       internal_properties : CAAAAAgAAADwAr5jPESlAPsxEzgaL/5ZufDcLDHAfYT6t2eUsQNat1qPjB5ERw78zBUEfrUtPrSs9LzDET8epImoJgYhCUtN+pJp+Uuj4TFw2KmlU1sl7u6Ga+ugNmS+U2JGGmAvT8YlPuQnJFbzdg==
+       type : 3
+       content :
+        identifier : 0x2543da5406495c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_CONTENU
+       identifier : 0x2b5853400b8a805f
+       internal_properties : CAAAAAgAAAAXLZDVUdoFCRahA0YvrukEkdbcKkYNC7h5Vkzc4nqOwW1/NYYaSiuz/AZRXP2wPRJfkBD96YXw8kz0cPjz96vbP/1pHRu7de5DzmavlWPQduxpOOeAJ815Fp1WM1lf0vv7yY+T3JNVAk+1EthuYBDpm8htYYv9m4EYj9f8bdiOskF954yo
+       type : 3
+       content :
+        identifier : 0x2543da54064b5c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_IMAGE
+       identifier : 0x2c7b810604abf597
+       internal_properties : CAAAAAgAAADq1iWWhHVsJgfO4kMoxAIElwEH/CL6+LM8sZ0nfF+SFBlc+mKXCPiX0ogiZwb+NEa5+NBcqyw/js9KbY41rRQLPOLdaxfIaPl2eUAds2i5qQ75tbej3jcz1D9UoPgm3fsoHul+Wx0HdS79cMSyWJDBKuqJrUo9QzDTPmoJdqu1V/SogmHF
+       type : 3
+       content :
+        identifier : 0x2543da54064d5c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_DATE_HEURE
+       identifier : 0x2579af94042d5105
+       internal_properties : CAAAAAgAAADW7Us+Ru7hnWnW854RRH3Qy2h0Zkdqk+Rr+HF3jN08h6UVWU+HiYaWyiWiaXP+j34La1VGt8dZtWUobzvlZ/hsa3MGEiJralXa8pWGGZQ9xJfG2JiT5jqGhCPoT548i7qoGBdQsCzlYFKd1xP4jxKVTSI/gR2vMQ3OdSmp1ZgGiqnbqU3p
+       type : 3
+       content :
+        identifier : 0x2543da54064f5c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_TITRE_COULEUR
+       identifier : 0x2c8112080306c0d1
+       internal_properties : CAAAAAgAAACxwbLcukC3uBssAWPUa7IJmsp3BhhUqVWl/Xm/M6yvsSK/uoWVK0+mTediDQvn5n4JNjiLwSv1SzUkobYJehZqO4fTFjkDtF8geMHcvgeImuGUjU0vTX3ueCI0o2akL3y9XWMit3UkaYiMR/8YNUuesw==
+       type : 3
+       content :
+        identifier : 0x2543da5406515c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+     -
+       name : ATT_CONTENU_COULEUR
+       identifier : 0x2c8112080308c0d1
+       internal_properties : CAAAAAgAAAAb3DoalkAf9NT/dU4UFwWNOVvkjnOH0JmaTIcleJDFk8cIdp0kUr5XSGdExNU6Hts19biP7NOT2vUx1dBmgVFIBhf+0yfIkYtCRvMyPKxTbN2Gw0E/cLAGZF4Ep14pnjiR8ePYOf6xI0b0o34rZRny6sMi8Tswhf9B+Q+alOQAPJxIPhp51rDZsw==
+       type : 3
+       content :
+        identifier : 0x2543da5406535c51
+        internal_properties : CAAAAAgAAAA+ydwH69gPtZH9qoG8K7G6DH/mRhLAsIA4PXnwyQx9MV8BNs7UzvWB7NTCuEJWvBmA5CdsnUFWw3dCUBfdsaykjF1uve6LPYfwNBNWYEJulQmozEPUgRf5BggPT0njovHi1TUZ3dMWVWJDzVO7BYEECF/l1PEjm665bwXVv4LK4oa6xdFXhLX48q7GZuO+5fIY2l9pbbTIT9LWlT6k
+        type : 3
+       code_elements :
+        type_code : 46
+        p_codes : []
+    type : 30
+    code_elements :
+     type_code : 42
+     p_codes :
+      -
+        code : |1-
+         
+        type : 14
+      -
+        type : 35
+        enabled : false
+      -
+        code : |1-
+         
+        type : 21
+      -
+        type : 22
+        enabled : false
+      -
+        type : 24
+        enabled : false
+      -
+        type : 23
+        enabled : false
+      -
+        type : 25
+        enabled : false
+      -
+        code : |1-
+         gnIndiceBilletLu = ZR_BILLETS
+         
+         OuvreFenêtreMobile(FEN_BilletFiche, ZR_BILLETS[zr_billets].ATT_ID,  ZR_BILLETS,  ZR_BILLETS..Occurrence, REQ_BilletListe, FEN_BilletListe..Nom)
+        type : 33
+      -
+        code : |1+
+         //
+         //
+         //// Actualise le flux RSS
+         //actualiseFluxRSS(gnIDFluxRSS)
+         //
+         //// Actualise la liste des billets
+         //actualiseListe()
+         
+        type : 230
+      -
+        type : 241
+        enabled : false
+      -
+        type : 222
+        enabled : false
+      -
+        type : 223
+        enabled : false
+      -
+        type : 224
+        enabled : false
+  -
+    name : LIB_TestHauteurDescription
+    identifier : 0x266ae96726bec3e0
+    internal_properties : CAAAAAgAAACBQu24pjS5HlCUJHOWUpCYgBbcOTLBUvMU+KtY1k3b+uMqxZtDPm5Pptc5omVhkNKI07tDOpc5b2GBVfmn+E748YwUyatJ30+SlQYD6C5ky/R3y0twwiVhG7a7mTIbH6kS4GMjlpQZiosRGw6FwuyaCiz6VukaySijTaCD/vCNJL3k4Mwx3JubSHBi5Yntckw743JQlzmIHq4pcu0sSHHHDW3VriWvQ9iNHgB2UayUx3lVa66IwkXm6LnYLR2qsqNc+18Hh1ut3xo3LKKh3mpnvaryiNMh/pkKxCBZDBN8LfCCWe6COXBtOYR48W+3Jev0oDu/SU2DaMyANQKA0EWtoEI8QVHdfPSgZga9Ub3P1UrKnZ/vqEUUkXAuRWidnfMoz/BRC33t0FlfJiWZXyyw5Ms3GAVwO+zoGmMskN4LMrDtjOwHaDwjabngWia5VwJHcM+QSomGYdyULDhUGFjhT+dwIC3GE2aTsN2/yBrqzx2NXOeP0F/8lsLgtBDWVqww6DDWuwSKuycX3mVaGWR611v4qFV2s0Oc0j86dXmSler0pSd5QS3ndiv7tsKK9A==
+    properties :
+     x : -345
+     y : 80
+     width : 195
+     height : 82
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : LIB_TestHauteurTitre
+    identifier : 0x266ae96c26c2d7b6
+    internal_properties : CAAAAAgAAACSzaRlD4QeRGRkk7JcyTcRn1xEzfuIpBbNFZh9OInU4RHvIyPQfWoTVvyHR58PMm2rSgJKXxTkQnOxzxIGzXd210uQPxHAQG+Aemz8RdqV9u03rY5SRyZ5KX+zpzeijo2CrHFmF86IAaBD1/p8qKl738BGtFTL6EPwpBNMu4T7yMgb/x1+Kr7BbNeyd+XFPB7x+bb9lspbusSCaAccdhsc6hXlKXY45m/wXHhqAd4hrWtjxiS6SRUposgQPiSWrfSEimlZ4+IaMdj4aw1oDQSlG17Km+9z0ZT5LnJeRoRNCvzppZ+yu4qJcJi7+H6kHi8o547qciCldWKEdhfBS5UOS5m86O4qxgA7rDN+leD7+UXf7zT8IqIelcW48WjI+8K+myfBYvYea2tQRWrP0iKUH3IACXyBTXDXN7qtrFDV2K5lpBUsE/wOn8UEDoeZaPnP0D30XKZqnDDqpkbPOyLndLaJarUc6blzNaoge6XBSM+0r/OVR5tMFSp36E+Uk+UqHNinLfLu55FeZCDpo3GqWjtAtXB9J7vj7kJWiowpUv5l36hZbrRcA837DhJsZFML27odA13tzrg=
+    properties :
+     x : -345
+     y : -5
+     width : 195
+     height : 82
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+ actionbar :
+  name : ACTB_ActionBar
+  identifier : 0x254b8ac50d04166f
+  internal_properties : CAAAAAgAAACJ4kUbTE6aVg7XzHqflynboVu3QoHOch7NtewhimNlyW8EJtDdx9ml9IdlWAE4NPk6maczP1HPrQwdJ5olZzoCvlrmSvJ+0wk2KFnUagnp9yosr3VFkPCA8TWl2AA/PFyddsObuW1t3LuZD3yniISVWcNT7fDqvOXpO5RwTOQ067yHfdRPUpDhtUlaxcFI0auA9dxHKvdEN7VeAFnGYaTVJlAksSMlD72LVy7Z2XFyeytOwJOV+Jd12NsSlhReMFQTV9iW5AdY1A1soS1ZlfZBFRUVNC1A66BcnqZWpuZggAY9AYo84RRUDq+ZZb2Wo4PCGiTRU6XbmvIw3nMA2XMEYndRajoLD8BHGw1AW/qcnrqQzSYu4zVWmAkKiFmCnsrKnp2WmFbw01adejCRqOBw/G+hirWgDHRHpLvCd6+QE3T1b7RQZRH7zy0VVvI=
+  controls : []
+  code_elements :
+   type_code : 125
+   p_codes :
+    -
+      type : 229
+      enabled : false
+    -
+      type : 239
+      enabled : false
+    -
+      type : 240
+      enabled : false
+ menu :
+  name : _Menu
+  identifier : 0x2b5839a60a367f92
+  internal_properties : CAAAAAgAAAByVTsSr3/syDi1St8xf8fgHxdhV816G1q5zyODGkOm1npuSkYo5g/jXWoWFFK2H3oUBZtHLsT5rfRCnVFNNS0taWG501M84VhyiY2gqfWqbb5TaLNBc7/5X5PbRqVlZ5a3p7SznWjoHPbzt8FGrVw2pkxQ2AMTSCoEquPAoSRRZmCgf0llwPSIdkz+fkQsa3yCb/aARC1IuAmTNbEAkdknQHeBdhsRIWlMefD05RVbqvlMGzysSB4KUPZWTHHaQPB4ObHU/5KQ/VjN8jyQaoRgKuGxrJ5V23KTuMr/Zw==
+  options :
+   -
+     name : OPT_Tout_lu
+     identifier : 0x2669c08736ccf858
+     internal_properties : CAAAAAgAAABK/DU6WB3W7O9EvK7h1k1fzZgBJ08X4qXBjwKk6gTSOsjwhXAY1iYHhcvXL8goYAyLZr9gCdBd8/Ab35UXvLYeTqq26tl/FdiPmKCgM+weStQkaS0kXAzBGEI0U+2Xy/9LUkloSE4dhnvkv9f2Cr/s2imIzXyQt2/mdcBZIoNKrTMElOufEfLMBbUfafiNS+FMeu3xwuIpDwD43OLE3f54woyJ2CEjQ6vE4xZ4GtXt4iwBzwb/VPIAN5i+h7Izkw7L+DH0Cz16bRy3L0ubTsV3ICeEAxwuucjV1IEHJF6v88UAqkAaGSVOyxgA4GaeRCYzwrCPkKvWKW0yrP5M4sZ3q3ffmjnaCjgY7oMIFwmNbAIRIeOUwLPBzEDK
+     code_elements :
+      type_code : 26
+      p_codes :
+       -
+         code : |1+
+          
+          fluxMarquerBilletsEnLus(gnIDFluxRSS)
+          
+          
+          // Actualise la liste des billets
+          actualiseListe()
+          
+          
+          ToastAffiche("Billets marqués comme étant lus")
+         type : 32
+  code_elements :
+   type_code : 26
+   p_codes : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAAD0O2jKYZVzJX9CkhzrCWkMaJzD1s7wYwOYZIqcp37Z+/U2dwWKlFsfvRG2DTB97+rEwGRvLA7ZzVGAmj8aFaffWr4NVUxVS+GNMdmZYs3FSi5XLwI8L7KXvL21
+ code_elements :
+  internal_properties : CAAAAAgAAABNFqnKEfX9lLnL0L7S3U2MqmhXtovFYhMk4pYO8p8LvkJVKeeFxyVGFuUPY/eATyAnIqo/7L43X9HvxOdAAAdp9dGRrPpJ2py9eJAJ
+  type_code : 1
+  p_codes :
+   -
+     code : |1+
+      PROCEDURE FEN_BilletListe(gnIDFluxRSS est un entier = -1)
+      
+      
+      gnIndiceBilletLu est un entier 
+      
+   -
+     code : |1+
+      
+      // Actualise la liste des billets
+      actualiseListe()
+     type : 34
+   -
+     code : |1-
+      
+     type : 234
+   -
+     code : |1+
+      
+      
+      
+      // Actualise la liste des billets
+      pour TOUTE LIGNE nIndice DE ZR_BILLETS
+      	
+      	SI ATT_IMAGE[nIndice] = "" ALORS
+      		ZR_BILLETS[nIndice].IMG_ILLUS..X = ZR_BILLETS..Largeur - ZR_BILLETS..X
+      	sinon
+      		ZR_BILLETS[nIndice].IMG_ILLUS..X = ZR_BILLETS..Largeur - ZR_BILLETS..X - IMG_ILLUS..largeur - CoordonnéeEditeurVersEcran(10)
+      	fin
+      	
+      	ZR_BILLETS[nIndice].LIB_CONTENU..Largeur = ZR_BILLETS[nIndice].IMG_ILLUS..X - LIB_CONTENU..X - CoordonnéeEditeurVersEcran(10)
+      		
+      FIN
+     type : 165
+   -
+     code : |1+
+      
+      // Actualise la liste des billets
+      actualiseListe()
+     type : 177
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1+
+      
+      
+     type : 11
+   -
+     code : |1+
+      
+      
+     type : 12
+   -
+     code : |1+
+      
+      
+     type : 17
+   -
+     code : |1+
+      
+      
+     type : 13
+  procedures :
+   -
+     name : actualiseListe
+     procedure_id : 1970417234612883449
+     type_code : 14
+     code : |1+
+      // Résumé : Actualise la liste des billets
+      
+      PROCEDURE actualiseListe()
+      
+      nLargeurContenu est un entier  = LIB_contenu..Largeur 
+      nTaillePoliceTitre est un entier = 6 
+      nTaillePoliceDescription est un entier = 5
+      
+      ZoneRépétéeSupprimeTout(ZR_BILLETS)
+      
+      // Positionne sur le flux
+      HLitRecherchePremier(FluxRSS, IDFluxRSS, gnIDFluxRSS)
+      
+      SI HTrouve(FluxRSS) ALORS
+      	
+      	//Titre de la fenêtre
+      	FEN_BilletListe..Titre = FluxRSS.titre
+      	
+      	// Initialisation requête pour récupérer tous les billets du flux
+      	REQ_BilletListe.pIDFluxRSS = gnIDFluxRSS
+      	HExécuteRequête(REQ_BilletListe)
+      	
+      	pour TOUT REQ_BilletListe 
+      		
+      		nIndice est un entier = ZoneRépétéeAjouteLigne(ZR_BILLETS, REQ_BilletListe.IDBillet, REQ_BilletListe.Titre,  REQ_BilletListe.Description, "",REQ_BilletListe.Image)	
+      		
+      		//**Si on n'a pas d'image à afficher, on affiche le texte sur toute la largeur
+      		
+      		SI REQ_BilletListe.Image = "" ALORS
+      			ZR_BILLETS[nIndice].IMG_ILLUS..X = ZR_BILLETS..Largeur - ZR_BILLETS..X 
+      		SINON
+      			ZR_BILLETS[nIndice].IMG_ILLUS..X = ZR_BILLETS..Largeur - ZR_BILLETS..X - IMG_ILLUS..Largeur - CoordonnéeEditeurVersEcran(10)
+      		FIN
+      		ZR_BILLETS[nIndice].LIB_CONTENU..Largeur = ZR_BILLETS[nIndice].IMG_ILLUS..X - LIB_CONTENU..X -  CoordonnéeEditeurVersEcran(10)
+      		
+      		//Libellés qui servent pour calcul des hauteurs de texte
+      		LIB_TestHauteurTitre..largeur =  ZR_BILLETS[nIndice].IMG_ILLUS..X - LIB_CONTENU..X -  CoordonnéeEditeurVersEcran(10)
+      		LIB_TestHauteurDescription..largeur =  ZR_BILLETS[nIndice].IMG_ILLUS..X - LIB_CONTENU..X -  CoordonnéeEditeurVersEcran(10)
+      		
+      		//**
+      		
+      		
+      		//Date et heure du billet
+      		dhDatePublication est une dateheure = REQ_BilletListe.DatePublication
+      		ZR_BILLETS.ATT_DATE_HEURE[nIndice] = DateVersChaîne(dhDatePublication, maskDateDuréeRelative) 
+      		
+      		//Billet déjà lu ?
+      		SI REQ_BilletListe.Lu = vrai ALORS
+      			ZR_BILLETS.ATT_CONTENU_COULEUR[nIndice] = grisfoncé
+      			ZR_BILLETS.ATT_TITRE_COULEUR[nIndice] = GrisFoncé
+      			SI REQ_BilletListe.Image <> "" ALORS 
+      				imageBillet est une image = ZR_BILLETS.ATT_IMAGE[nIndice]
+      				dModifiesaturation(imageBillet, -50)
+      				bufImage est un buffer = imageBillet
+      				ZR_BILLETS.ATT_IMAGE[nIndice] = bufImage
+      			fin
+      		SINON
+      			ZR_BILLETS.ATT_CONTENU_COULEUR[nIndice] = RVB(101,128,146)
+      		FIN
+      		
+      		
+      		//**Titre et description du billet = contenu du billet
+      		//On affiche en priorité le titre entier en plus grosse police
+      		//Et s'il reste de la place, on affiche un peu de la description du billet, on tronquera selon la place disponible restante
+      		
+      		sContenu est une chaine 
+      		SI ZR_BILLETS.ATT_Description[nIndice] =  "" ALORS
+      			
+      			//Si pas de description, c'est facile, on affiche que le titre 
+      			sContenu = gStylo(RGB(51,51,51)) + gPoliceTaille(nTaillePoliceTitre) + ZR_BILLETS.ATT_TITRE[nIndice]
+      			
+      		sinon
+      			
+      			//S'il y a une description
+      			//On détermine le nombre de pixels en hauteur nécessaires pour afficher le titre
+      			nTitreHauteur est un entier = TexteHauteur(LIB_TestHauteurTitre,  ZR_BILLETS.ATT_TITRE[nIndice] + rc , tMultiligne)
+      			//On en déduit la hauteur restant disponible pour la description du billet
+      			nHauteurRestantePourDescr est un entier = LIB_CONTENU..hauteur - nTitreHauteur
+      			
+      			sDescription est une chaine = formateContenu(ZR_BILLETS.ATT_Description[nIndice]) 
+      			
+      			n EST UN ENTIER = 1
+      			BOUCLE
+      				
+      				//Tant que la description est trop grande par rapport à la place disponible, on tronque
+      				nHauteurDescription est un entier = TexteHauteur(LIB_TestHauteurDescription, sDescription+["... "], tMultiligne)
+      				SI nHauteurDescription >= nHauteurRestantePourDescr ALORS
+      										
+      					//On tronque une première fois en se basant sur un produit en croix
+      					nNbreCaractPossible est un entier = (nHauteurRestantePourDescr * taille(sDescription)) / nHauteurDescription
+      					sDescription = Tronque(sDescription, Taille(sDescription)-nNbreCaractPossible, nombreDeCaractèresASupprimer) 
+      					//					
+      					//on tronque intelligemment sur mot complet
+      					sDernierMot est une chaine  = extraitchaine(SansEspace(sDescription), rangdernier, " ", depuisfin)
+      					SI taille(sDernierMot) >= taille(sDescription) alors sortir
+      					sDescription = Tronque(sDescription, Taille(sDernierMot)+1, nombreDeCaractèresASupprimer) 
+      					si sDescription = eot ALORS sortir			
+      					
+      				SINON 
+      					SORTIR
+      				FIN
+      				
+      			FIN
+      			
+      			
+      			
+      			//S'il reste de la description après la troncature, on montre par "..." que l'on a tronqué
+      			SI sDescription <> EOT ALORS
+      				sDescription += ["..."]
+      				sContenu = gStylo(RGB(51,51,51)) + gPoliceTaille(nTaillePoliceTitre) + ZR_BILLETS.ATT_TITRE[nIndice]+ RC + gStylo(RGB(101,128,146)) + gPoliceTaille(nTaillePoliceDescription) + sDescription
+      			SINON
+      				sContenu = gStylo(RGB(51,51,51)) + gPoliceTaille(nTaillePoliceTitre) + ZR_BILLETS.ATT_TITRE[nIndice]
+      			FIN
+      		FIN
+      		
+      		ZR_BILLETS.ATT_CONTENU[nIndice]  = sContenu
+      		
+      		//**
+      		
+      		
+      	FIN
+      	
+      	
+      	SI ZR_BILLETS..Occurrence = 0 ALORS
+      		Ferme()
+      	FIN
+      FIN
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAADeQcze1Ixqfwn6yOfjwsQ7IKxuiqMzbTygTLeVXFH8DB0WqXgSKvkzRoO0/Z27dfrh8D+BLYmMenjdtZezotw6hJf2mE4Gv6OctA==
+resources :
+ string_res :
+  identifier : 0x1fd22bb0048eaef8
+  internal_properties : CAAAAAgAAACyXVFaObH4lOGSEHJoZf1MD49w+XTw2LScZCP/urkWFwy+HYJdyQ3umA==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe
